@@ -26,3 +26,17 @@ Route::get('/montesua', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login/user', 'Auth\LoginController@showUserLoginForm');
+Route::get('/login/client', 'Auth\LoginController@showClientLoginForm');
+Route::get('/register/user', 'Auth\RegisterController@showUserRegisterForm');
+Route::get('/register/client', 'Auth\RegisterController@showClientRegisterForm');
+
+Route::post('/login/user', 'Auth\LoginController@userLogin');
+Route::post('/login/client', 'Auth\LoginController@clientLogin');
+Route::post('/register/user', 'Auth\RegisterController@createUser');
+Route::post('/register/client', 'Auth\RegisterController@createCLient');
+
+Route::view('/home', 'home')->middleware('auth');
+Route::view('/admin', 'admin');
+Route::view('/writer', 'writer');

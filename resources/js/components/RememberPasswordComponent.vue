@@ -1,45 +1,27 @@
 <template>
-    <v-dialog v-model="showRememberPassword" persistent max-width="500px">
-        <v-card>
-            <v-card-title>
-                <span class="headline">Send reset password email</span>
-            </v-card-title>
-            <v-card-text>
-                <v-form ref="resetPasswordForm" v-model="valid">
-                    <v-text-field
-                            label="E-mail"
-                            v-model="email"
-                            :rules="emailRules"
-                            :error="errors['email']"
-                            :error-messages="errors['email']"
-                            required
-                    ></v-text-field>
-                </v-form>
-                <a href="/login" color="blue darken-2">
-                    Login
-                </a> &nbsp; |
-                <a href="/register" color="blue darken-2">
-                    Register
-                </a>
-            </v-card-text>
-            <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click.native="showRememberPassword = false">Tancar</v-btn>
-                <v-btn
-                        :loading="loading"
-                        flat
-                        :color="done ? 'green' : 'blue'"
-                        @click.native="rememberPassword"
-                >
-                    <v-icon v-if="!done">mail_outline</v-icon>
-                    <v-icon v-else>done</v-icon>
-                    &nbsp;
-                    <template v-if="!done">Send</template>
-                    <template v-else>Done</template>
-                </v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-dialog>
+  <v-dialog v-model="showRememberPassword" persistent max-width="500px">
+    <v-card>
+      <v-card-title>
+        <span class="headline">Resetar senha</span>
+      </v-card-title>
+      <v-card-text>
+        <v-form ref="resetPasswordForm" v-model="valid">
+          <v-text-field label="E-mail" v-model="email" :rules="emailRules" :error="errors['email']" :error-messages="errors['email']" required></v-text-field>
+        </v-form>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue darken-1" flat @click.native="showRememberPassword = false">Fechar</v-btn>
+        <v-btn :loading="loading" flat :color="done ? 'green' : 'blue'" @click.native="rememberPassword">
+          <v-icon v-if="!done">mail_outline</v-icon>
+          <v-icon v-else>done</v-icon>
+          &nbsp;
+          <template v-if="!done">Enviar</template>
+          <template v-else>Enviado</template>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 
@@ -60,8 +42,8 @@
         errors: [],
         email: '',
         emailRules: [
-          (v) => !!v || 'Email is mandatory',
-          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email have to be valid'
+          (v) => !!v || 'E-mail é obrigatório.',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O e-mail precisa ser válido.'
         ]
       }
     },

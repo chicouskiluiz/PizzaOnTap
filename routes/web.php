@@ -14,6 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cardapio', function () {
+    return view('cardapio');
+});
+
+Route::get('/montesua', function () {
+    return view('monte');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

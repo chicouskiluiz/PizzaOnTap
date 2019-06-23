@@ -86,7 +86,7 @@
         ],
         password: '',
         passwordRules: [
-          (v) => !!v || 'A senha deve ser obrigatória.',
+          (v) => !!v || 'A senha é obrigatória.',
           (v) => v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.'
         ],
         passwordConfirmation: '',
@@ -94,14 +94,26 @@
           (v) => v === this.password || 'As senhas devem ser idênticas.'
         ],
         phone: '',
-        phoneConfirmation: [
-          (v) => !!v || 'O telefone deve ser obrigatório.',
+        phoneRules: [
+          (v) => !!v || 'O telefone é obrigatório.',
           (v) => v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.'
         ],
         cep: '',
+        cepRules: [
+          (v) => !!v || 'O CEP é obrigatório.',
+        ],
         address: '',
+        addressRules: [
+          (v) => !!v || 'O endereço é obrigatório.',
+        ],
         number: '',
+        numberRules: [
+          (v) => !!v || 'O número é obrigatório.',
+        ],
         neighborhood: '',
+        neighborhoodRules: [
+          (v) => !!v || 'O vizinho é obrigatório.',
+        ],
         complement: '',
         valid: false,
         registerLoading: false

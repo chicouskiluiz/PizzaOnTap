@@ -7,8 +7,8 @@
       </v-card-title>
       <v-card-text>
         <v-form ref="loginForm" v-model="valid">
-          <v-text-field name="cpf" label="CPF" v-model="cpf" :rules="cpfRules" required></v-text-field>
-          <v-text-field name="password" label="Senha" v-model="password" :rules="passwordRules" hint="At least 6 characters" min="6" type="password" required></v-text-field>
+          <v-text-field name="email" label="E-mail" v-model="email" :rules="emailRules" :error="errors['email']" :error-messages="errors['email']" required></v-text-field>
+          <v-text-field name="password" label="Senha" v-model="password" :rules="passwordRules" min="6" type="password" required></v-text-field>
         </v-form>
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
@@ -40,10 +40,10 @@
       return {
         errors: [],
         internalAction: this.action,
-        cpf: '',
-        cpfRules: [
-          (v) => !!v || 'CPF é obrigatório.',
-          (v) => v.length === 11 || 'CPF precisa ter 11 dígitos.'
+        email: '',
+        emailRules: [
+          (v) => !!v || 'O endereço de email é obrigatório.',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O endereço de email precisa ser válido.'
         ],
         password: '',
         passwordRules: [
@@ -81,13 +81,13 @@
         if (this.$refs.loginForm.validate()) {
           this.loginLoading = true
           const credentials = {
-            'cpf': this.cpf,
+            'email': this.email,
             'password': this.password
           }
           this.$store.dispatch(actions.LOGIN, credentials).then(response => {
             this.loginLoading = false
             this.showLogin = false
-            window.location = '/'
+            window.location.reload()
           }).catch(error => {
             console.log('HEY:')
             console.log(error.response.data)

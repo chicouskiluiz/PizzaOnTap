@@ -39,9 +39,7 @@
             @else
             <v-spacer></v-spacer>
             <cart-popup action="{{ $action ?? null }}"></cart-popup>
-            <v-btn @click="logout" flat color="orange">
-                Sair
-            </v-btn>
+            <v-btn @click="logout" flat>Sair</v-btn>
             @endif
         </v-toolbar>
         <v-content>

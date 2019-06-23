@@ -1909,11 +1909,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       errors: [],
       internalAction: this.action,
-      cpf: '',
-      cpfRules: [function (v) {
-        return !!v || 'CPF é obrigatório.';
+      email: '',
+      emailRules: [function (v) {
+        return !!v || 'O endereço de email é obrigatório.';
       }, function (v) {
-        return v.length === 11 || 'CPF precisa ter 11 dígitos.';
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O endereço de email precisa ser válido.';
       }],
       password: '',
       passwordRules: [function (v) {
@@ -1953,13 +1953,13 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$refs.loginForm.validate()) {
         this.loginLoading = true;
         var credentials = {
-          'cpf': this.cpf,
+          'email': this.email,
           'password': this.password
         };
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["LOGIN"], credentials).then(function (response) {
           _this.loginLoading = false;
           _this.showLogin = false;
-          window.location = '/';
+          window.location.reload();
         })["catch"](function (error) {
           console.log('HEY:');
           console.log(error.response.data);
@@ -2251,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
           'name': this.name,
           'email': this.email,
           'password': this.password,
+          'password_confirmation': this.passwordConfirmation,
           'phone': this.phone,
           'cep': this.cep,
           'address': this.address,
@@ -2261,7 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["REGISTER"], user).then(function (response) {
           _this2.registerLoading = false;
           _this2.showRegister = false;
-          window.location = '/home';
+          window.location.reload();
         })["catch"](function (error) {
           if (error.response && error.response.status === 422) {
             _this2.showError({
@@ -2500,7 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.done = true;
           Object(_utils_sleep__WEBPACK_IMPORTED_MODULE_1__["default"])(4000).then(function () {
             _this2.showResetPassword = false;
-            window.location = '/home';
+            window.location.reload();
           });
         })["catch"](function (error) {
           if (error.response && error.response.status === 422) {
@@ -4498,17 +4499,19 @@ var render = function() {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      name: "cpf",
-                      label: "CPF",
-                      rules: _vm.cpfRules,
+                      name: "email",
+                      label: "E-mail",
+                      rules: _vm.emailRules,
+                      error: _vm.errors["email"],
+                      "error-messages": _vm.errors["email"],
                       required: ""
                     },
                     model: {
-                      value: _vm.cpf,
+                      value: _vm.email,
                       callback: function($$v) {
-                        _vm.cpf = $$v
+                        _vm.email = $$v
                       },
-                      expression: "cpf"
+                      expression: "email"
                     }
                   }),
                   _vm._v(" "),
@@ -4517,7 +4520,6 @@ var render = function() {
                       name: "password",
                       label: "Senha",
                       rules: _vm.passwordRules,
-                      hint: "At least 6 characters",
                       min: "6",
                       type: "password",
                       required: ""
@@ -5248,6 +5250,8 @@ var render = function() {
                                   name: "password",
                                   label: "Confirmação de senha",
                                   rules: _vm.passwordConfirmationRules,
+                                  error: _vm.errors["password"],
+                                  "error-messages": _vm.errors["password"],
                                   type: "password",
                                   required: ""
                                 },

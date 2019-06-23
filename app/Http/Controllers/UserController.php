@@ -33,4 +33,8 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    public function list() {
+        return User::all();
+    }
 }

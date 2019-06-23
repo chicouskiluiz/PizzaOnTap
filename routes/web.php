@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/cardapio', function () {
-    return view('cardapio');
+    return view('cardapio',
+        [
+            'products' => json_encode([
+                "1" => "Teste",
+            ])
+        ]);
 });
 
 Route::get('/montesua', function () {

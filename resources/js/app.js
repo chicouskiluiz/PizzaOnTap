@@ -22,6 +22,7 @@ Vue.component('reset-password', require('./components/ResetPasswordComponent.vue
 Vue.component('snackbar', require('./components/SnackBarComponent.vue').default);
 Vue.component('gravatar', require('./components/GravatarComponent.vue').default);
 Vue.component('cart-popup', require('./components/CartPopup.vue').default);
+Vue.component('products', require('./components/Products.vue').default);
 
 window.Vuetify = require('vuetify');
 Vue.use(Vuetify)

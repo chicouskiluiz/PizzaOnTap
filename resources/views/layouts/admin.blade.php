@@ -15,7 +15,6 @@
 </head>
 <body>
 <v-app id="app" v-cloak>
-    <snackbar></snackbar>
     <v-navigation-drawer fixed clipped app v-model="drawer">
         <v-list dense>
             <template v-for="(item, i) in items">

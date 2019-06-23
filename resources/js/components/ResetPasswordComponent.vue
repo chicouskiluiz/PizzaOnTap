@@ -93,7 +93,7 @@
             this.done = true
             sleep(4000).then(() => {
               this.showResetPassword = false
-              window.location = '/home'
+              window.location.reload()
             })
           }).catch(error => {
             if (error.response && error.response.status === 422) {

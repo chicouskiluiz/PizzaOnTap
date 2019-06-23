@@ -22,7 +22,7 @@
               <v-text-field name="password" label="Senha" v-model="password" :rules="passwordRules" hint="Pelo menos 6 caracteres." :error="errors['password']" :error-messages="errors['password']" min="6" type="password" required></v-text-field>
             </v-flex>
             <v-flex md6>
-              <v-text-field name="password" label="Confirmação de senha" v-model="passwordConfirmation" :rules="passwordConfirmationRules" type="password" required></v-text-field>
+              <v-text-field name="password" label="Confirmação de senha" v-model="passwordConfirmation" :rules="passwordConfirmationRules" :error="errors['password']" :error-messages="errors['password']" type="password" required></v-text-field>
             </v-flex>
           </v-layout>
         </v-form>
@@ -150,6 +150,7 @@
             'name': this.name,
             'email': this.email,
             'password': this.password,
+            'password_confirmation': this.passwordConfirmation,
             'phone': this.phone,
 
             'cep': this.cep,
@@ -161,7 +162,7 @@
           this.$store.dispatch(actions.REGISTER, user).then(response => {
             this.registerLoading = false
             this.showRegister = false
-            window.location = '/home'
+            window.location.reload()
           }).catch(error => {
             if (error.response && error.response.status === 422) {
               this.showError({

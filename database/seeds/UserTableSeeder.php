@@ -14,10 +14,18 @@ class UserTableSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'SUdoW',
-            'email' => 'sudow@pot.com',
+            'email' => 'sudow@pizza.com',
             'password' => '123qwe!@#',
             'cpf' => '09772899906',
             'isAdmin' => true
+        ]);
+
+        $user = User::create([
+            'name' => 'client',
+            'email' => 'client@pizza.com',
+            'password' => 'secret',
+            'cpf' => '09772899907',
+            'isAdmin' => false
         ]);
     }
 }

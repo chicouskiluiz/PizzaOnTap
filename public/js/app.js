@@ -1770,28 +1770,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2101,24 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2134,9 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
       errors: [],
       email: '',
       emailRules: [function (v) {
-        return !!v || 'Email is mandatory';
+        return !!v || 'E-mail é obrigatório.';
       }, function (v) {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email have to be valid';
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O e-mail precisa ser válido.';
       }]
     };
   },
@@ -4213,8 +4173,6 @@ var render = function() {
                       name: "cpf",
                       label: "CPF",
                       rules: _vm.cpfRules,
-                      error: _vm.errors["cpf"],
-                      "error-messages": _vm.errors["cpf"],
                       required: ""
                     },
                     model: {
@@ -4755,9 +4713,7 @@ var render = function() {
         "v-card",
         [
           _c("v-card-title", [
-            _c("span", { staticClass: "headline" }, [
-              _vm._v("Send reset password email")
-            ])
+            _c("span", { staticClass: "headline" }, [_vm._v("Resetar senha")])
           ]),
           _vm._v(" "),
           _c(
@@ -4794,16 +4750,6 @@ var render = function() {
                   })
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "/login", color: "blue darken-2" } }, [
-                _vm._v("\n                Login\n            ")
-              ]),
-              _vm._v("   |\n            "),
-              _c(
-                "a",
-                { attrs: { href: "/register", color: "blue darken-2" } },
-                [_vm._v("\n                Register\n            ")]
               )
             ],
             1
@@ -4824,7 +4770,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Tancar")]
+                [_vm._v("Fechar")]
               ),
               _vm._v(" "),
               _c(
@@ -4845,8 +4791,8 @@ var render = function() {
                   !_vm.done
                     ? _c("v-icon", [_vm._v("mail_outline")])
                     : _c("v-icon", [_vm._v("done")]),
-                  _vm._v("\n                 \n                "),
-                  !_vm.done ? [_vm._v("Send")] : [_vm._v("Done")]
+                  _vm._v("\n         \n        "),
+                  !_vm.done ? [_vm._v("Enviar")] : [_vm._v("Enviado")]
                 ],
                 2
               )

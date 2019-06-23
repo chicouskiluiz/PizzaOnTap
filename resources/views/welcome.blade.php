@@ -28,18 +28,15 @@
         <v-toolbar>
             <v-toolbar-title>{{ config('app.name') }}</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn flat to="home">Home</v-btn>
-            <v-btn flat>Cardápio</v-btn>
-            <v-btn flat>Monte sua Pizza</v-btn>
+            <v-btn flat href="/">Início</v-btn>
+            <v-btn flat href="/cardapio">Cardápio</v-btn>
+            <v-btn flat href="/montesua">Monte sua Pizza</v-btn>
             @if (Route::has('login') && ! Auth::check() )
                 <v-spacer></v-spacer>
                 <login-button action="{{ $action ?? null }}" ></login-button>
                 <register-button action="{{ $action ?? null }}" ></register-button>
                 <remember-password action="{{ $action ?? null }}"></remember-password>
-                <reset-password
-                        action="{{ $action ?? null }}"
-                        token="{{ $token ?? null }}"
-                        email="{{ $email ?? null }}"></reset-password>
+                <reset-password action="{{ $action ?? null }}" token="{{ $token ?? null }}" email="{{ $email ?? null }}"></reset-password>
             @else
             <v-spacer></v-spacer>
             <v-btn flat>Carrinho</v-btn>
@@ -47,24 +44,21 @@
         </v-toolbar>
         <v-content>
             <section>
-                <v-parallax src="/img/hero.jpeg" height="600">
-                    <v-layout
-                            column
-                            align-center
-                            justify-center
-                            class="white--text"
-                    >
-                        <img src="/img/vuetify.png" alt="Vuetify.js" height="200">
-                        <h1 class="white--text mb-2 display-1 text-xs-center">Parallax Template</h1>
-                        <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
-                        <v-btn
-                                class="blue lighten-2 mt-5"
-                                dark
-                                large
-                                href="/home"
-                        >
-                            Get Started
-                        </v-btn>
+                <v-parallax src="/img/pizzaWall.jpg" height="600">
+                    <v-layout column align-center justify-center class="black--text">
+                    <v-card>
+                        <v-img src="/img/pizzaicon.png" alt="Vuetify.js" height="220"></v-img>
+                        <v-card-text>
+                            <h1 class="mb-2 display-1 text-xs-center">PizzaOnTap</h1>
+                            <div class="subheading mb-3 text-xs-center">O sabor da verdadeira pizza</div>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn class="lighten-2 mt-5" dark large href="/cardapio">Cardápio</v-btn>
+                            <v-btn class="lighten-2 mt-5" dark large href="/montesua">Monte a sua</v-btn>
+                            <v-spacer></v-spacer>
+                        </v-card-actions>
+                        </v-card>
                     </v-layout>
                 </v-parallax>
             </section>
@@ -75,7 +69,7 @@
                         <v-flex xs12 sm4>
                             <v-card class="elevation-0 transparent">
                                 <v-card-title primary-title class="layout justify-center">
-                                    <div class="headline">Company info</div>
+                                    <div class="headline">Informações</div>
                                 </v-card-title>
                                 <v-card-text>
                                     Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
@@ -87,7 +81,7 @@
                         <v-flex xs12 sm4 offset-sm1>
                             <v-card class="elevation-0 transparent">
                                 <v-card-title primary-title class="layout justify-center">
-                                    <div class="headline">Contact us</div>
+                                    <div class="headline">Contato</div>
                                 </v-card-title>
                                 <v-card-text>
                                     Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
@@ -98,7 +92,7 @@
                                             <v-icon class="blue--text text--lighten-2">phone</v-icon>
                                         </v-list-tile-action>
                                         <v-list-tile-content>
-                                            <v-list-tile-title>777-867-5309</v-list-tile-title>
+                                            <v-list-tile-title>(42) 3333-3333</v-list-tile-title>
                                         </v-list-tile-content>
                                     </v-list-tile>
                                     <v-list-tile>
@@ -106,7 +100,7 @@
                                             <v-icon class="blue--text text--lighten-2">place</v-icon>
                                         </v-list-tile-action>
                                         <v-list-tile-content>
-                                            <v-list-tile-title>Chicago, US</v-list-tile-title>
+                                            <v-list-tile-title>Guarapuava, PR</v-list-tile-title>
                                         </v-list-tile-content>
                                     </v-list-tile>
                                     <v-list-tile>
@@ -114,7 +108,7 @@
                                             <v-icon class="blue--text text--lighten-2">email</v-icon>
                                         </v-list-tile-action>
                                         <v-list-tile-content>
-                                            <v-list-tile-title>john@vuetifyjs.com</v-list-tile-title>
+                                            <v-list-tile-title>contato@pizzaontap.com</v-list-tile-title>
                                         </v-list-tile-content>
                                     </v-list-tile>
                                 </v-list>

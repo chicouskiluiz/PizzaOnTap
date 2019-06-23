@@ -1,56 +1,34 @@
 <template>
-    <v-dialog
-            v-show="show"
-            v-model="showLogin"
-            persistent max-width="500px"
-            :fullscreen="$vuetify.breakpoint.xsOnly">
-        <v-btn flat color="primary" dark slot="activator">Entrar</v-btn>
-
-        <v-card>
-            <v-card-title>
-                <span class="headline">Entrar</span>
-            </v-card-title>
-            <v-card-text>
-                <v-form ref="loginForm" v-model="valid">
-                    <v-text-field
-                            name="cpf"
-                            label="CPF"
-                            v-model="cpf"
-                            :rules="cpfRules"
-                            :error="errors['cpf']"
-                            :error-messages="errors['cpf']"
-                            required
-                    ></v-text-field>
-                    <v-text-field
-                            name="password"
-                            label="Senha"
-                            v-model="password"
-                            :rules="passwordRules"
-                            hint="At least 6 characters"
-                            min="6"
-                            type="password"
-                            required
-                    ></v-text-field>
-                </v-form>
-                <v-container grid-list-md text-xs-center>
-                    <v-layout row wrap>
-                        <v-flex xs6>
-                            <v-btn flat href="/password/reset">Lembrar Senha</v-btn>
-                        </v-flex>
-                        <v-flex xs6>
-                            <v-btn flat href="/register">Registrar</v-btn>
-                        </v-flex>
-                    </v-layout>
-                </v-container>
-            </v-card-text>
-            <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-2" flat @click.native="showLogin = false">Fechar</v-btn>
-                <v-btn color="blue darken-2" class="white--text" @click.native="login" :loading="loginLoading">Entrar</v-btn>
-                <v-spacer></v-spacer>
-            </v-card-actions>
-        </v-card>
-    </v-dialog>
+  <v-dialog v-show="show" v-model="showLogin" persistent max-width="500px" :fullscreen="$vuetify.breakpoint.xsOnly">
+    <v-btn flat color="primary" dark slot="activator">Entrar</v-btn>
+    <v-card>
+      <v-card-title>
+        <span class="headline">Entrar</span>
+      </v-card-title>
+      <v-card-text>
+        <v-form ref="loginForm" v-model="valid">
+          <v-text-field name="cpf" label="CPF" v-model="cpf" :rules="cpfRules" required></v-text-field>
+          <v-text-field name="password" label="Senha" v-model="password" :rules="passwordRules" hint="At least 6 characters" min="6" type="password" required></v-text-field>
+        </v-form>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex xs6>
+              <v-btn flat href="/password/reset">Lembrar Senha</v-btn>
+            </v-flex>
+            <v-flex xs6>
+              <v-btn flat href="/register">Registrar</v-btn>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue darken-2" flat @click.native="showLogin = false">Fechar</v-btn>
+        <v-btn color="blue darken-2" class="white--text" @click.native="login" :loading="loginLoading">Entrar</v-btn>
+        <v-spacer></v-spacer>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>

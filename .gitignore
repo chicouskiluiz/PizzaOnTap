@@ -12,3 +12,4 @@ yarn-error.log
 /.idea/*
 .editorconfig
 *.lock
+/public/js/app.js

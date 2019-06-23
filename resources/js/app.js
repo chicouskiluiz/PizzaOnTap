@@ -44,7 +44,8 @@ const app = new Vue({
   mixins: [ withSnackbar ],
   data: () => ({
     drawer: null,
-    drawerRight: false,
+    userInfo: false,
+    carrinho: false,
     editingUser: false,
     logoutLoading: false,
     changingPassword: false,
@@ -88,8 +89,11 @@ const app = new Vue({
     updateName (name) {
       this.$store.commit(mutations.USER, {...this.user, name})
     },
-    toogleRightDrawer () {
-      this.drawerRight = !this.drawerRight
+    toggleUserDrawer () {
+      this.userInfo = !this.userInfo
+    },
+    toggleCarrinhoDrawer () {
+      this.carrinho = !this.carrinho
     },
     checkRoles (item) {
       if (item.role) {

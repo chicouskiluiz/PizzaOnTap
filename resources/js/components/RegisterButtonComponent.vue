@@ -166,6 +166,8 @@
             this.showRegister = false
             window.location.reload()
           }).catch(error => {
+            console.log('HEY:')
+            console.log(error.response.data)
             if (error.response && error.response.status === 422) {
               this.showError({
                 message: 'Invalid data'

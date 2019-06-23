@@ -1959,7 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["LOGIN"], credentials).then(function (response) {
           _this.loginLoading = false;
           _this.showLogin = false;
-          window.location = '/home';
+          window.location = '/';
         })["catch"](function (error) {
           console.log('HEY:');
           console.log(error.response.data);
@@ -1977,6 +1977,105 @@ __webpack_require__.r(__webpack_exports__);
           _this.loginLoading = false;
         });
       }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Products.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Products.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      search: '',
+      rowsPerPageItems: [12],
+      pagination: {}
+    };
+  },
+  props: ['products'],
+  methods: {
+    infoGame: function infoGame(scene) {
+      this.$store.dispatch('setSceneDetailInfo', scene);
     }
   }
 });
@@ -2329,57 +2428,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_withSnackbar__WEBPACK_IMPORTED_MODULE_2__["default"]],
   data: function data() {
+    var _this = this;
+
     return {
       internalAction: this.action,
       internalEmail: this.email,
       loading: false,
       done: false,
       emailRules: [function (v) {
-        return !!v || 'El email és obligatori';
+        return !!v || 'O e-mail é obrigatório.';
       }, function (v) {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'S\'ha d\'indicar un email vàlid';
       }],
       password: '',
-      passwordConfirmation: '',
       passwordRules: [function (v) {
-        return !!v || 'La paraula de pas és obligatòria';
+        return !!v || 'A senha é obrigatória';
       }, function (v) {
-        return v.length >= 6 || 'La paraula de pas ha de tenir com a mínim 6 caràcters';
+        return v.length >= 6 || 'A senha deve ter no mínimo 6 caracteres.';
+      }],
+      passwordConfirmation: '',
+      passwordConfirmationRules: [function (v) {
+        return v === _this.password || 'As senhas devem ser idênticas.';
       }],
       valid: false
     };
@@ -2410,7 +2485,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     reset: function reset() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.$refs.resetPasswordForm.validate()) {
         var user = {
@@ -2421,68 +2496,26 @@ __webpack_require__.r(__webpack_exports__);
         };
         this.loading = true;
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["RESET_PASSWORD"], user).then(function (response) {
-          _this.loading = false;
-          _this.done = true;
+          _this2.loading = false;
+          _this2.done = true;
           Object(_utils_sleep__WEBPACK_IMPORTED_MODULE_1__["default"])(4000).then(function () {
-            _this.showResetPassword = false;
+            _this2.showResetPassword = false;
             window.location = '/home';
           });
         })["catch"](function (error) {
           if (error.response && error.response.status === 422) {
-            _this.showError({
+            _this2.showError({
               message: 'Invalid data'
             });
           } else {
-            _this.showError(error);
+            _this2.showError(error);
           }
 
-          _this.errors = error.response.data.errors;
+          _this2.errors = error.response.data.errors;
         }).then(function () {
-          _this.loading = false;
+          _this2.loading = false;
         });
       }
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _store_mutation_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/mutation-types */ "./resources/js/store/mutation-types.js");
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['snackbarShow', 'snackbarColor', 'snackbarText', 'snackbarSubtext', 'snackbarTimeout'])),
-  methods: {
-    close: function close() {
-      this.$store.commit(_store_mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_SNACKBAR_SHOW"], false);
     }
   }
 });
@@ -4594,6 +4627,443 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Products.vue?vue&type=template&id=57b394cf&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Products.vue?vue&type=template&id=57b394cf& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-flex",
+    { attrs: { "d-flex": "", xs12: "", sm12: "", md12: "" } },
+    [
+      _c(
+        "v-card",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "v-card-actions",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  "append-icon": "search",
+                  label: "Procurar",
+                  "single-line": ""
+                },
+                model: {
+                  value: _vm.search,
+                  callback: function($$v) {
+                    _vm.search = $$v
+                  },
+                  expression: "search"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "", "grid-list-md": "" } },
+            [
+              _c(
+                "v-data-iterator",
+                {
+                  attrs: {
+                    items: _vm.products,
+                    search: _vm.search,
+                    "rows-per-page-items": _vm.rowsPerPageItems,
+                    pagination: _vm.pagination,
+                    "content-tag": "v-layout",
+                    row: "",
+                    wrap: ""
+                  },
+                  on: {
+                    "update:pagination": function($event) {
+                      _vm.pagination = $event
+                    }
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "item",
+                      fn: function(props) {
+                        return _c(
+                          "v-flex",
+                          { attrs: { md2: "" } },
+                          [
+                            _c(
+                              "v-card",
+                              [
+                                _c(
+                                  "v-system-bar",
+                                  [
+                                    _c("span", [
+                                      _vm._v(_vm._s(props.item.name))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    !props.item.approved
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: { slot: "activator" },
+                                                slot: "activator"
+                                              },
+                                              [_vm._v("flag")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Aprovado")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    props.item.deleted
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: { slot: "activator" },
+                                                slot: "activator"
+                                              },
+                                              [_vm._v("delete")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Deletado")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    !props.item.enabled
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: { slot: "activator" },
+                                                slot: "activator"
+                                              },
+                                              [_vm._v("lock")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Permitido")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-media",
+                                  { attrs: { src: props.item.image } },
+                                  [
+                                    _c(
+                                      "v-card",
+                                      {
+                                        staticClass: "white--text",
+                                        attrs: {
+                                          height: "105px",
+                                          width: "100%",
+                                          color: "transparent",
+                                          flat: "",
+                                          tile: ""
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-card-text",
+                                          {
+                                            staticClass:
+                                              "transprent-text body-2"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                  " +
+                                                _vm._s(
+                                                  props.item.smallDescription
+                                                ) +
+                                                "\n                "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-system-bar",
+                                  [
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    props.item.canEdit
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                staticClass: "mx-0",
+                                                attrs: {
+                                                  slot: "activator",
+                                                  small: "",
+                                                  icon: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.editGame(
+                                                      props.item
+                                                    )
+                                                  }
+                                                },
+                                                slot: "activator"
+                                              },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("settings")
+                                                ])
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Editar")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-tooltip",
+                                      { attrs: { bottom: "" } },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            staticClass: "mx-0",
+                                            attrs: {
+                                              slot: "activator",
+                                              small: "",
+                                              icon: ""
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.infoGame(props.item)
+                                              }
+                                            },
+                                            slot: "activator"
+                                          },
+                                          [_c("v-icon", [_vm._v("info")])],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", [_vm._v("Detalhes")])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    props.item.lastGame
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                staticClass: "mx-0",
+                                                attrs: {
+                                                  slot: "activator",
+                                                  small: "",
+                                                  icon: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.newGame(
+                                                      props.item
+                                                    )
+                                                  }
+                                                },
+                                                slot: "activator"
+                                              },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("add_circle")
+                                                ])
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Novo Jogo")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    props.item.lastGame
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                staticClass: "mx-0",
+                                                attrs: {
+                                                  slot: "activator",
+                                                  small: "",
+                                                  icon: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.continueGame(
+                                                      props.item
+                                                    )
+                                                  }
+                                                },
+                                                slot: "activator"
+                                              },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("play_circle_filled")
+                                                ])
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Continuar")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    !props.item.lastGame
+                                      ? _c(
+                                          "v-tooltip",
+                                          { attrs: { bottom: "" } },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                staticClass: "mx-0",
+                                                attrs: {
+                                                  slot: "activator",
+                                                  small: "",
+                                                  icon: ""
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.newGame(
+                                                      props.item
+                                                    )
+                                                  }
+                                                },
+                                                slot: "activator"
+                                              },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("play_circle_filled")
+                                                ])
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("span", [_vm._v("Jogar")])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      }
+                    },
+                    {
+                      key: "pageText",
+                      fn: function(props) {
+                        return _c("v-flex", {}, [
+                          _vm._v(
+                            "\n          " +
+                              _vm._s(
+                                _vm.$ml
+                                  .with("a", _vm.pagination.page)
+                                  .with(
+                                    "t",
+                                    Math.ceil(
+                                      props.itemsLength /
+                                        _vm.pagination.rowsPerPage
+                                    )
+                                  )
+                                  .get("lobby.block.allScenes.pagination")
+                              ) +
+                              "\n        "
+                          )
+                        ])
+                      }
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { slot: "no-data" }, slot: "no-data" },
+                    [_vm._v("\n          Sem produtos adicionados\n        ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RegisterButtonComponent.vue?vue&type=template&id=4c7c682d&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RegisterButtonComponent.vue?vue&type=template&id=4c7c682d&scoped=true& ***!
@@ -5161,7 +5631,7 @@ var render = function() {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      label: "Email",
+                      label: "E-mail",
                       rules: _vm.emailRules,
                       required: ""
                     },
@@ -5177,9 +5647,9 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: {
                       name: "password",
-                      label: "Password",
+                      label: "Senha",
                       rules: _vm.passwordRules,
-                      hint: "At least 6 characters",
+                      hint: "Deve conter ao menos 6 caracteres.",
                       min: "6",
                       type: "password",
                       required: ""
@@ -5196,10 +5666,8 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: {
                       name: "passwordConfirmation",
-                      label: "Password confirmation",
-                      rules: _vm.passwordRules,
-                      hint: "At least 6 characters",
-                      min: "6",
+                      label: "Confirmação de senha",
+                      rules: _vm.passwordConfirmationRules,
                       type: "password",
                       required: ""
                     },
@@ -5252,8 +5720,8 @@ var render = function() {
                 },
                 [
                   _vm.done ? _c("v-icon", [_vm._v("done")]) : _vm._e(),
-                  _vm._v("\n                 \n                "),
-                  !_vm.done ? [_vm._v("Reset")] : [_vm._v("Done")]
+                  _vm._v("\n         \n        "),
+                  !_vm.done ? [_vm._v("Resetar")] : [_vm._v("Pronto")]
                 ],
                 2
               )
@@ -5262,64 +5730,6 @@ var render = function() {
           )
         ],
         1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-snackbar",
-    {
-      attrs: {
-        timeout: _vm.snackbarTimeout,
-        color: _vm.snackbarColor,
-        "multi-line": true
-      },
-      model: {
-        value: _vm.snackbarShow,
-        callback: function($$v) {
-          _vm.snackbarShow = $$v
-        },
-        expression: "snackbarShow"
-      }
-    },
-    [
-      _vm._v("\n    " + _vm._s(_vm.snackbarText)),
-      _c("br"),
-      _vm._v("\n    " + _vm._s(_vm.snackbarSubtext) + "\n    "),
-      _c(
-        "v-btn",
-        {
-          attrs: { dark: "", flat: "" },
-          nativeOn: {
-            click: function($event) {
-              return _vm.close($event)
-            }
-          }
-        },
-        [_vm._v("Close")]
       )
     ],
     1
@@ -44541,9 +44951,9 @@ Vue.component('login-button', __webpack_require__(/*! ./components/LoginButtonCo
 Vue.component('register-button', __webpack_require__(/*! ./components/RegisterButtonComponent.vue */ "./resources/js/components/RegisterButtonComponent.vue")["default"]);
 Vue.component('remember-password', __webpack_require__(/*! ./components/RememberPasswordComponent.vue */ "./resources/js/components/RememberPasswordComponent.vue")["default"]);
 Vue.component('reset-password', __webpack_require__(/*! ./components/ResetPasswordComponent.vue */ "./resources/js/components/ResetPasswordComponent.vue")["default"]);
-Vue.component('snackbar', __webpack_require__(/*! ./components/SnackBarComponent.vue */ "./resources/js/components/SnackBarComponent.vue")["default"]);
 Vue.component('gravatar', __webpack_require__(/*! ./components/GravatarComponent.vue */ "./resources/js/components/GravatarComponent.vue")["default"]);
 Vue.component('cart-popup', __webpack_require__(/*! ./components/CartPopup.vue */ "./resources/js/components/CartPopup.vue")["default"]);
+Vue.component('products', __webpack_require__(/*! ./components/Products.vue */ "./resources/js/components/Products.vue")["default"]);
 window.Vuetify = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
 Vue.use(Vuetify);
 
@@ -44950,6 +45360,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Products.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Products.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Products.vue?vue&type=template&id=57b394cf& */ "./resources/js/components/Products.vue?vue&type=template&id=57b394cf&");
+/* harmony import */ var _Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Products.vue?vue&type=script&lang=js& */ "./resources/js/components/Products.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Products.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Products.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Products.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Products.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Products.vue?vue&type=template&id=57b394cf&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Products.vue?vue&type=template&id=57b394cf& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=template&id=57b394cf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Products.vue?vue&type=template&id=57b394cf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_57b394cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/RegisterButtonComponent.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/RegisterButtonComponent.vue ***!
@@ -45170,75 +45649,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordComponent_vue_vue_type_template_id_277b31be___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordComponent_vue_vue_type_template_id_277b31be___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SnackBarComponent.vue?vue&type=template&id=1a963ebd& */ "./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&");
-/* harmony import */ var _SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SnackBarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/SnackBarComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SnackBarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd& ***!
-  \**************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SnackBarComponent.vue?vue&type=template&id=1a963ebd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

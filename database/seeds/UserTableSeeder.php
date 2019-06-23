@@ -15,7 +15,9 @@ class UserTableSeeder extends Seeder
         $user = User::create([
             'name' => 'SUdoW',
             'email' => 'sudow@pot.com',
-            'password' => '123qwe!@#'
+            'password' => '123qwe!@#',
+            'cpf' => '09772899906',
+            'isAdmin' => true
         ]);
     }
 }

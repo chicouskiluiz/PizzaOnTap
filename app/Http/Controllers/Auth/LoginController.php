@@ -53,7 +53,7 @@ class LoginController extends Controller
      */
     public function showUserLoginForm()
     {
-        return view('auth.login', ['url' => 'user']);
+        return view('layouts/index');
     }
 
     public function userLogin(Request $request)
@@ -66,7 +66,7 @@ class LoginController extends Controller
 
     public function showClientLoginForm()
     {
-        return view('auth.login', ['url' => 'client']);
+        return view('layouts/index');
     }
 
     public function clientLogin(Request $request)

@@ -24,7 +24,6 @@
 <body>
 <div id="app">
     <v-app light v-cloak>
-        <snackbar></snackbar>
         <v-toolbar>
             <v-toolbar-title>{{ config('app.name') }}</v-toolbar-title>
             <v-spacer></v-spacer>

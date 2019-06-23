@@ -18,9 +18,10 @@ window.Vue = require('vue');
 Vue.component('login-button', require('./components/LoginButtonComponent.vue').default);
 Vue.component('register-button', require('./components/RegisterButtonComponent.vue').default);
 Vue.component('remember-password', require('./components/RememberPasswordComponent.vue').default);
-Vue.component('reset-password', require('./components/ResetPasswordComponent.vue')).default;
+Vue.component('reset-password', require('./components/ResetPasswordComponent.vue').default);
 Vue.component('snackbar', require('./components/SnackBarComponent.vue').default);
 Vue.component('gravatar', require('./components/GravatarComponent.vue').default);
+Vue.component('cart-popup', require('./components/CartPopup.vue').default);
 
 window.Vuetify = require('vuetify');
 Vue.use(Vuetify)

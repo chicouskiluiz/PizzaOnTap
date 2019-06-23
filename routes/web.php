@@ -21,8 +21,10 @@ Route::get('/montesua', function () {
 });
 
 Auth::routes();
+
 Route::get('/admin', 'HomeController@index')->name('pedidos');
 
+Route::get('/user/list', 'UserController@list');
 Route::post('/register', 'UserController@register')->name('user.register');
 
 Route::get('/admin', 'AdminController@index');
@@ -34,9 +36,13 @@ Route::get('/admin/tamanhos', 'AdminController@getTamanhos');
 Route::get('/admin/usuarios', 'AdminController@getUsuarios');
 
 Route::get('/additional', 'AdditionalController@list');
+Route::post('/additional', 'AdditionalController@store');
 
 Route::get('/drink', 'DrinkController@list');
+Route::post('/drink', 'DrinkController@store');
 
 Route::get('/flavor', 'FlavorController@list');
+Route::post('/flavor', 'FlavorController@store');
 
 Route::get('/size', 'SizeController@list');
+Route::post('/size', 'SizeController@store');

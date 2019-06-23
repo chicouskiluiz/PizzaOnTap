@@ -82,7 +82,6 @@
           this.$store.dispatch(actions.LOGIN, credentials).then(response => {
             this.loginLoading = false
             this.showLogin = false
-            window.location = '/home'
           }).catch(error => {
             console.log('HEY:')
             console.log(error.response.data)

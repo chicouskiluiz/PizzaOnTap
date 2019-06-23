@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::get('/cardapio', function () {
     return view('cardapio',
         [
@@ -30,4 +34,4 @@ Route::get('/montesua', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('pedidos');
+Route::get('/admin', 'AdminController@index')->name('pedidos');

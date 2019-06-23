@@ -50,7 +50,7 @@ const app = new Vue({
     changingPassword: false,
     updatingUser: false,
     items: [
-      { icon: 'home', text: 'Home', href: '/home' },
+      { icon: 'home', text: 'Admin', href: '/admin' },
       { icon: 'home', text: 'Landing Page', href: '/' },
       { icon: 'settings', text: 'Settings' },
       { icon: 'chat_bubble', text: 'Contact' },

@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
             'email' => 'sudow@pizza.com',
             'password' => '123qwe!@#',
             'cpf' => '09772899906',
+            'phone' => '998023772',
             'isAdmin' => true
         ]);
 
@@ -25,6 +26,7 @@ class UserTableSeeder extends Seeder
             'email' => 'client@pizza.com',
             'password' => 'secret',
             'cpf' => '09772899907',
+            'phone' => '998023773',
             'isAdmin' => false
         ]);
     }

@@ -1,81 +1,58 @@
 <template>
-    <v-dialog
-            fullscreen
-            v-if="show"
-            v-model="showRegister"
-            persistent>
-        <v-btn slot="activator">Register</v-btn>
-        <v-card>
-            <v-card-title>
-                <span class="headline">User registration</span>
-            </v-card-title>
-            <v-card-text>
-                <v-form ref="registrationForm" v-model="valid">
-                    <v-text-field
-                            label="User name"
-                            v-model="name"
-                            :rules="nameRules"
-                            required
-                    ></v-text-field>
-                    <v-text-field
-                            label="Email"
-                            v-model="email"
-                            :rules="emailRules"
-                            :error="errors['email']"
-                            :error-messages="errors['email']"
-                            required
-                    ></v-text-field>
-                    <v-text-field
-                            name="password"
-                            label="Password"
-                            v-model="password"
-                            :rules="passwordRules"
-                            hint="At least 6 characters"
-                            :error="errors['email']"
-                            :error-messages="errors['email']"
-                            required
-                            min="6"
-                            type="password"
-                            required
-                    ></v-text-field>
-                    <v-text-field
-                            name="password"
-                            label="Password confirmation"
-                            v-model="passwordConfirmation"
-                            :rules="passwordRules"
-                            hint="At least 6 characters"
-                            min="6"
-                            type="password"
-                            required
-                            :error="errors['password']"
-                            :error-messages="errors['password']"
-                    ></v-text-field>
-                </v-form>
-                <v-btn href="/auth/facebook" style="background-color: #3b5998;" class="white--text">
-                    <svg class="facebook" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 width="266.893px" height="266.895px" viewBox="0 0 266.893 266.895" enable-background="new 0 0 266.893 266.895"
-                                 xml:space="preserve">
-                            <path id="Blue_1_" fill="#3C5A99" d="M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812
-                                c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225
-                                H248.082z"/>
-                            <path id="f" fill="#FFFFFF" d="M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935
-                                l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585
-                                v99.803H182.409z"/>
-                            </svg>
-                    <span class="ml-1">Register with Facebook</span>
-                </v-btn>
-                <a href="/login" color="blue darken-2">
-                    I already have an user
-                </a>
-            </v-card-text>
-            <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click.native="showRegister = false">Close</v-btn>
-                <v-btn :loading="registerLoading" color="blue darken-1" class="white--text" @click.native="register">Register</v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-dialog>
-
+  <v-dialog fullscreen v-if="show" v-model="showRegister" persistent>
+    <v-btn flat slot="activator">Registro</v-btn>
+    <v-card>
+      <v-card-title>
+        <span class="headline">Registro de Usuário</span>
+      </v-card-title>
+      <v-card-text>
+        <v-form ref="registrationForm" v-model="valid">
+          <v-text-field label="CPF" v-model="cpf" :rules="cpfRules" required></v-text-field>
+          <v-text-field label="Nome Completo" v-model="name" :rules="nameRules" required></v-text-field>
+          <v-layout row wrap>
+            <v-flex md6>
+              <v-text-field label="Telefone" v-model="phone" :rules="phoneRules" required></v-text-field>
+            </v-flex>
+            <v-flex md6>
+              <v-text-field label="E-mail" v-model="email" :rules="emailRules" :error="errors['email']" :error-messages="errors['email']" required></v-text-field>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap>
+            <v-flex md6>
+              <v-text-field name="password" label="Senha" v-model="password" :rules="passwordRules" hint="Pelo menos 6 caracteres." :error="errors['password']" :error-messages="errors['password']" min="6" type="password" required></v-text-field>
+            </v-flex>
+            <v-flex md6>
+              <v-text-field name="password" label="Confirmação de senha" v-model="passwordConfirmation" :rules="passwordConfirmationRules" type="password" required></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-form>
+      </v-card-text>
+      <v-card-text>
+        <v-text-field label="Rua" v-model="address" :rules="addressRules" required></v-text-field>
+          <v-layout row wrap>
+            <v-flex md6>
+              <v-text-field name="number" label="Numero" v-model="number" :rules="numberRules" required></v-text-field>
+            </v-flex>
+            <v-flex md6>
+              <v-text-field name="cep" label="CEP" v-model="cep" :rules="cepRules" required></v-text-field>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap>
+            <v-flex md6>
+              <v-text-field name="neighborhood" label="Bairro" v-model="neighborhood" :rules="neighborhoodRules" required></v-text-field>
+            </v-flex>
+            <v-flex md6>
+              <v-text-field name="complement" label="Complemento" v-model="complement"></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click.native="showRegister = false">Fechar</v-btn>
+          <v-btn :loading="registerLoading" color="blue darken-1" class="white--text" @click.native="register">Registrar</v-btn>
+        </v-card-actions>
+      </v-card>
+  </v-dialog>
 </template>
 
 <style scoped>
@@ -93,21 +70,39 @@
       return {
         errors: [],
         internalAction: this.action,
+        cpf: '',
+        cpfRules: [
+          (v) => !!v || 'CPF é obrigatório.',
+          (v) => v.length === 11 || 'CPF precisa ter 11 dígitos.'
+        ],
         name: '',
         nameRules: [
-          (v) => !!v || 'User name is mandatory'
+          (v) => !!v || 'O nome completo é obrigatório.'
         ],
         email: '',
         emailRules: [
-          (v) => !!v || 'Mail is mandatory',
-          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email have to be valid'
+          (v) => !!v || 'O endereço de email é obrigatório.',
+          (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O endereço de email precisa ser válido.'
         ],
         password: '',
         passwordRules: [
-          (v) => !!v || 'Password is mandatory',
-          (v) => v.length >= 6 || 'Password at least have to be 6 characters'
+          (v) => !!v || 'A senha deve ser obrigatória.',
+          (v) => v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.'
         ],
         passwordConfirmation: '',
+        passwordConfirmationRules: [
+          (v) => v === this.password || 'As senhas devem ser idênticas.'
+        ],
+        phone: '',
+        phoneConfirmation: [
+          (v) => !!v || 'O telefone deve ser obrigatório.',
+          (v) => v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.'
+        ],
+        cep: '',
+        address: '',
+        number: '',
+        neighborhood: '',
+        complement: '',
         valid: false,
         registerLoading: false
       }
@@ -139,10 +134,17 @@
         if (this.$refs.registrationForm.validate()) {
           this.registerLoading = true
           const user = {
+            'cpf': this.cpf,
             'name': this.name,
             'email': this.email,
             'password': this.password,
-            'password_confirmation': this.passwordConfirmation,
+            'phone': this.phone,
+
+            'cep': this.cep,
+            'address': this.address,
+            'number': this.number,
+            'neighborhood': this.neighborhood,
+            'complement': this.complement,
           }
           this.$store.dispatch(actions.REGISTER, user).then(response => {
             this.registerLoading = false

@@ -1792,30 +1792,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1824,17 +1800,17 @@ __webpack_require__.r(__webpack_exports__);
     return {
       errors: [],
       internalAction: this.action,
-      email: '',
-      emailRules: [function (v) {
-        return !!v || 'Email is mandatory';
+      cpf: '',
+      cpfRules: [function (v) {
+        return !!v || 'CPF é obrigatório.';
       }, function (v) {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email have to be a valid email';
+        return v.length === 11 || 'CPF precisa ter 11 dígitos.';
       }],
       password: '',
       passwordRules: [function (v) {
-        return !!v || 'Password is mandatory';
+        return !!v || 'Senha é obrigatória';
       }, function (v) {
-        return v.length >= 6 || 'Password have to be at least 6 characters long';
+        return v.length >= 6 || 'A senha precisa ter ao menos 6 dígitos.';
       }],
       valid: false,
       loginLoading: false
@@ -1868,7 +1844,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$refs.loginForm.validate()) {
         this.loginLoading = true;
         var credentials = {
-          'email': this.email,
+          'cpf': this.cpf,
           'password': this.password
         };
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["LOGIN"], credentials).then(function (response) {
@@ -1972,54 +1948,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_withSnackbar__WEBPACK_IMPORTED_MODULE_1__["default"]],
   data: function data() {
+    var _this = this;
+
     return {
       errors: [],
       internalAction: this.action,
+      cpf: '',
+      cpfRules: [function (v) {
+        return !!v || 'CPF é obrigatório.';
+      }, function (v) {
+        return v.length === 11 || 'CPF precisa ter 11 dígitos.';
+      }],
       name: '',
       nameRules: [function (v) {
-        return !!v || 'User name is mandatory';
+        return !!v || 'O nome completo é obrigatório.';
       }],
       email: '',
       emailRules: [function (v) {
-        return !!v || 'Mail is mandatory';
+        return !!v || 'O endereço de email é obrigatório.';
       }, function (v) {
-        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Email have to be valid';
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'O endereço de email precisa ser válido.';
       }],
       password: '',
       passwordRules: [function (v) {
-        return !!v || 'Password is mandatory';
+        return !!v || 'A senha deve ser obrigatória.';
       }, function (v) {
-        return v.length >= 6 || 'Password at least have to be 6 characters';
+        return v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.';
       }],
       passwordConfirmation: '',
+      passwordConfirmationRules: [function (v) {
+        return v === _this.password || 'As senhas devem ser idênticas.';
+      }],
+      phone: '',
+      phoneConfirmation: [function (v) {
+        return !!v || 'O telefone deve ser obrigatório.';
+      }, function (v) {
+        return v.length >= 6 || 'A senha deve conter ao menos 6 caracteres.';
+      }],
+      cep: '',
+      address: '',
+      number: '',
+      neighborhood: '',
+      complement: '',
       valid: false,
       registerLoading: false
     };
@@ -2047,32 +2022,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     register: function register() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.$refs.registrationForm.validate()) {
         this.registerLoading = true;
         var user = {
+          'cpf': this.cpf,
           'name': this.name,
           'email': this.email,
           'password': this.password,
-          'password_confirmation': this.passwordConfirmation
+          'phone': this.phone,
+          'cep': this.cep,
+          'address': this.address,
+          'number': this.number,
+          'neighborhood': this.neighborhood,
+          'complement': this.complement
         };
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["REGISTER"], user).then(function (response) {
-          _this.registerLoading = false;
-          _this.showRegister = false;
+          _this2.registerLoading = false;
+          _this2.showRegister = false;
           window.location = '/home';
         })["catch"](function (error) {
           if (error.response && error.response.status === 422) {
-            _this.showError({
+            _this2.showError({
               message: 'Invalid data'
             });
           } else {
-            _this.showError(error);
+            _this2.showError(error);
           }
 
-          _this.errors = error.response.data.errors;
+          _this2.errors = error.response.data.errors;
         }).then(function () {
-          _this.registerLoading = false;
+          _this2.registerLoading = false;
         });
       }
     }
@@ -2689,20 +2670,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
   } else {}
 })(this)
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
-// Module
-exports.push([module.i, "\n.facebook[data-v-014e11a6] {\n    width: 20px;\n}\n", ""]);
 
 
 /***/ }),
@@ -3528,36 +3495,6 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RegisterButtonComponent.vue?vue&type=style&index=0&id=4c7c682d&scoped=true&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RegisterButtonComponent.vue?vue&type=style&index=0&id=4c7c682d&scoped=true&lang=css& ***!
@@ -4204,10 +4141,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6& ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4242,17 +4179,17 @@ var render = function() {
       _c(
         "v-btn",
         {
-          attrs: { slot: "activator", color: "primary", dark: "" },
+          attrs: { slot: "activator", flat: "", color: "primary", dark: "" },
           slot: "activator"
         },
-        [_vm._v("Login")]
+        [_vm._v("Entrar")]
       ),
       _vm._v(" "),
       _c(
         "v-card",
         [
           _c("v-card-title", [
-            _c("span", { staticClass: "headline" }, [_vm._v("Login")])
+            _c("span", { staticClass: "headline" }, [_vm._v("Entrar")])
           ]),
           _vm._v(" "),
           _c(
@@ -4273,26 +4210,26 @@ var render = function() {
                 [
                   _c("v-text-field", {
                     attrs: {
-                      name: "email",
-                      label: "E-mail",
-                      rules: _vm.emailRules,
-                      error: _vm.errors["email"],
-                      "error-messages": _vm.errors["email"],
+                      name: "cpf",
+                      label: "CPF",
+                      rules: _vm.cpfRules,
+                      error: _vm.errors["cpf"],
+                      "error-messages": _vm.errors["cpf"],
                       required: ""
                     },
                     model: {
-                      value: _vm.email,
+                      value: _vm.cpf,
                       callback: function($$v) {
-                        _vm.email = $$v
+                        _vm.cpf = $$v
                       },
-                      expression: "email"
+                      expression: "cpf"
                     }
                   }),
                   _vm._v(" "),
                   _c("v-text-field", {
                     attrs: {
                       name: "password",
-                      label: "Password",
+                      label: "Senha",
                       rules: _vm.passwordRules,
                       hint: "At least 6 characters",
                       min: "6",
@@ -4321,96 +4258,29 @@ var render = function() {
                     [
                       _c(
                         "v-flex",
-                        { attrs: { xs12: "" } },
+                        { attrs: { xs6: "" } },
                         [
                           _c(
                             "v-btn",
-                            {
-                              staticClass: "white--text",
-                              staticStyle: { "background-color": "#3b5998" },
-                              attrs: { href: "/auth/facebook" }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass: "facebook",
-                                  attrs: {
-                                    version: "1.1",
-                                    id: "Layer_1",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    x: "0px",
-                                    y: "0px",
-                                    width: "266.893px",
-                                    height: "266.895px",
-                                    viewBox: "0 0 266.893 266.895",
-                                    "enable-background":
-                                      "new 0 0 266.893 266.895",
-                                    "xml:space": "preserve"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      id: "Blue_1_",
-                                      fill: "#3C5A99",
-                                      d:
-                                        "M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812\n                                    c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225\n                                    H248.082z"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("path", {
-                                    attrs: {
-                                      id: "f",
-                                      fill: "#FFFFFF",
-                                      d:
-                                        "M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935\n                                    l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585\n                                    v99.803H182.409z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "ml-1" }, [
-                                _vm._v("Login with Facebook")
-                              ])
-                            ]
+                            { attrs: { flat: "", href: "/password/reset" } },
+                            [_vm._v("Lembrar Senha")]
                           )
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-flex", { attrs: { xs12: "" } }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "/password/reset",
-                              color: "blue darken-2"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                            Remember password"
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-flex", { attrs: { xs12: "" } }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "/register", color: "blue darken-2" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                            Register\n                        "
-                            )
-                          ]
-                        )
-                      ])
+                      _c(
+                        "v-flex",
+                        { attrs: { xs6: "" } },
+                        [
+                          _c(
+                            "v-btn",
+                            { attrs: { flat: "", href: "/register" } },
+                            [_vm._v("Registrar")]
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -4436,7 +4306,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Close")]
+                [_vm._v("Fechar")]
               ),
               _vm._v(" "),
               _c(
@@ -4450,7 +4320,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Login")]
+                [_vm._v("Entrar")]
               ),
               _vm._v(" "),
               _c("v-spacer")
@@ -4500,16 +4370,18 @@ var render = function() {
           }
         },
         [
-          _c("v-btn", { attrs: { slot: "activator" }, slot: "activator" }, [
-            _vm._v("Register")
-          ]),
+          _c(
+            "v-btn",
+            { attrs: { slot: "activator", flat: "" }, slot: "activator" },
+            [_vm._v("Registro")]
+          ),
           _vm._v(" "),
           _c(
             "v-card",
             [
               _c("v-card-title", [
                 _c("span", { staticClass: "headline" }, [
-                  _vm._v("User registration")
+                  _vm._v("Registro de Usuário")
                 ])
               ]),
               _vm._v(" "),
@@ -4531,7 +4403,22 @@ var render = function() {
                     [
                       _c("v-text-field", {
                         attrs: {
-                          label: "User name",
+                          label: "CPF",
+                          rules: _vm.cpfRules,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.cpf,
+                          callback: function($$v) {
+                            _vm.cpf = $$v
+                          },
+                          expression: "cpf"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Nome Completo",
                           rules: _vm.nameRules,
                           required: ""
                         },
@@ -4544,130 +4431,241 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          label: "Email",
-                          rules: _vm.emailRules,
-                          error: _vm.errors["email"],
-                          "error-messages": _vm.errors["email"],
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.email,
-                          callback: function($$v) {
-                            _vm.email = $$v
-                          },
-                          expression: "email"
-                        }
-                      }),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Telefone",
+                                  rules: _vm.phoneRules,
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.phone,
+                                  callback: function($$v) {
+                                    _vm.phone = $$v
+                                  },
+                                  expression: "phone"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "E-mail",
+                                  rules: _vm.emailRules,
+                                  error: _vm.errors["email"],
+                                  "error-messages": _vm.errors["email"],
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.email,
+                                  callback: function($$v) {
+                                    _vm.email = $$v
+                                  },
+                                  expression: "email"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          name: "password",
-                          label: "Password",
-                          rules: _vm.passwordRules,
-                          hint: "At least 6 characters",
-                          error: _vm.errors["email"],
-                          "error-messages": _vm.errors["email"],
-                          required: "",
-                          min: "6",
-                          type: "password",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.password,
-                          callback: function($$v) {
-                            _vm.password = $$v
-                          },
-                          expression: "password"
-                        }
-                      }),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "password",
+                                  label: "Senha",
+                                  rules: _vm.passwordRules,
+                                  hint: "Pelo menos 6 caracteres.",
+                                  error: _vm.errors["password"],
+                                  "error-messages": _vm.errors["password"],
+                                  min: "6",
+                                  type: "password",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.password,
+                                  callback: function($$v) {
+                                    _vm.password = $$v
+                                  },
+                                  expression: "password"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "password",
+                                  label: "Confirmação de senha",
+                                  rules: _vm.passwordConfirmationRules,
+                                  type: "password",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.passwordConfirmation,
+                                  callback: function($$v) {
+                                    _vm.passwordConfirmation = $$v
+                                  },
+                                  expression: "passwordConfirmation"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Rua",
+                      rules: _vm.addressRules,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.address,
+                      callback: function($$v) {
+                        _vm.address = $$v
+                      },
+                      expression: "address"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { md6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              name: "number",
+                              label: "Numero",
+                              rules: _vm.numberRules,
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.number,
+                              callback: function($$v) {
+                                _vm.number = $$v
+                              },
+                              expression: "number"
+                            }
+                          })
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          name: "password",
-                          label: "Password confirmation",
-                          rules: _vm.passwordRules,
-                          hint: "At least 6 characters",
-                          min: "6",
-                          type: "password",
-                          required: "",
-                          error: _vm.errors["password"],
-                          "error-messages": _vm.errors["password"]
-                        },
-                        model: {
-                          value: _vm.passwordConfirmation,
-                          callback: function($$v) {
-                            _vm.passwordConfirmation = $$v
-                          },
-                          expression: "passwordConfirmation"
-                        }
-                      })
+                      _c(
+                        "v-flex",
+                        { attrs: { md6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              name: "cep",
+                              label: "CEP",
+                              rules: _vm.cepRules,
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.cep,
+                              callback: function($$v) {
+                                _vm.cep = $$v
+                              },
+                              expression: "cep"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "white--text",
-                      staticStyle: { "background-color": "#3b5998" },
-                      attrs: { href: "/auth/facebook" }
-                    },
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
                     [
                       _c(
-                        "svg",
-                        {
-                          staticClass: "facebook",
-                          attrs: {
-                            version: "1.1",
-                            id: "Layer_1",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                            x: "0px",
-                            y: "0px",
-                            width: "266.893px",
-                            height: "266.895px",
-                            viewBox: "0 0 266.893 266.895",
-                            "enable-background": "new 0 0 266.893 266.895",
-                            "xml:space": "preserve"
-                          }
-                        },
+                        "v-flex",
+                        { attrs: { md6: "" } },
                         [
-                          _c("path", {
+                          _c("v-text-field", {
                             attrs: {
-                              id: "Blue_1_",
-                              fill: "#3C5A99",
-                              d:
-                                "M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812\n                            c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225\n                            H248.082z"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              id: "f",
-                              fill: "#FFFFFF",
-                              d:
-                                "M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935\n                            l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585\n                            v99.803H182.409z"
+                              name: "neighborhood",
+                              label: "Bairro",
+                              rules: _vm.neighborhoodRules,
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.neighborhood,
+                              callback: function($$v) {
+                                _vm.neighborhood = $$v
+                              },
+                              expression: "neighborhood"
                             }
                           })
-                        ]
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      _c("span", { staticClass: "ml-1" }, [
-                        _vm._v("Register with Facebook")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    { attrs: { href: "/login", color: "blue darken-2" } },
-                    [
-                      _vm._v(
-                        "\n                I already have an user\n            "
+                      _c(
+                        "v-flex",
+                        { attrs: { md6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { name: "complement", label: "Complemento" },
+                            model: {
+                              value: _vm.complement,
+                              callback: function($$v) {
+                                _vm.complement = $$v
+                              },
+                              expression: "complement"
+                            }
+                          })
+                        ],
+                        1
                       )
-                    ]
+                    ],
+                    1
                   )
                 ],
                 1
@@ -4688,7 +4686,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Close")]
+                    [_vm._v("Fechar")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -4705,7 +4703,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Register")]
+                    [_vm._v("Registrar")]
                   )
                 ],
                 1
@@ -44226,12 +44224,7 @@ __webpack_require__.r(__webpack_exports__);
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout');
   },
   register: function register(user) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/register', {
-      'name': user.name,
-      'email': user.email,
-      'password': user.password,
-      'password_confirmation': user.password_confirmation
-    });
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/register', user);
   },
   remember: function remember(email) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/password/email', {
@@ -44239,12 +44232,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   reset: function reset(user) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/password/reset', {
-      'email': user.email,
-      'password': user.password,
-      'password_confirmation': user.password_confirmation,
-      'token': user.token
-    });
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/password/reset', user);
   }
 });
 
@@ -44573,11 +44561,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true& */ "./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true&");
+/* harmony import */ var _LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginButtonComponent.vue?vue&type=template&id=014e11a6& */ "./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&");
 /* harmony import */ var _LoginButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginButtonComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/LoginButtonComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& */ "./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -44585,13 +44571,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _LoginButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "014e11a6",
+  null,
   null
   
 )
@@ -44617,35 +44603,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=style&index=0&id=014e11a6&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_style_index_0_id_014e11a6_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true& ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6& ***!
+  \*****************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LoginButtonComponent.vue?vue&type=template&id=014e11a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoginButtonComponent.vue?vue&type=template&id=014e11a6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginButtonComponent_vue_vue_type_template_id_014e11a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -45496,8 +45466,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/comedinha/PizzaOnTap/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/comedinha/PizzaOnTap/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/comedinha/PizzaOnTap/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/comedinha/PizzaOnTap/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

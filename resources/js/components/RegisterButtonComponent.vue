@@ -28,23 +28,25 @@
         </v-form>
       </v-card-text>
       <v-card-text>
-        <v-text-field label="Rua" v-model="address" :rules="addressRules" required></v-text-field>
-          <v-layout row wrap>
-            <v-flex md6>
-              <v-text-field name="number" label="Numero" v-model="number" :rules="numberRules" required></v-text-field>
-            </v-flex>
-            <v-flex md6>
-              <v-text-field name="cep" label="CEP" v-model="cep" :rules="cepRules" required></v-text-field>
-            </v-flex>
-          </v-layout>
-          <v-layout row wrap>
-            <v-flex md6>
-              <v-text-field name="neighborhood" label="Bairro" v-model="neighborhood" :rules="neighborhoodRules" required></v-text-field>
-            </v-flex>
-            <v-flex md6>
-              <v-text-field name="complement" label="Complemento" v-model="complement"></v-text-field>
-            </v-flex>
-          </v-layout>
+        <v-form ref="registrationForm" v-model="valid">
+          <v-text-field label="Rua" v-model="address" :rules="addressRules" required></v-text-field>
+            <v-layout row wrap>
+              <v-flex md6>
+                <v-text-field name="number" label="Numero" v-model="number" :rules="numberRules" required></v-text-field>
+              </v-flex>
+              <v-flex md6>
+                <v-text-field name="cep" label="CEP" v-model="cep" :rules="cepRules" required></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex md6>
+                <v-text-field name="neighborhood" label="Bairro" v-model="neighborhood" :rules="neighborhoodRules" required></v-text-field>
+              </v-flex>
+              <v-flex md6>
+                <v-text-field name="complement" label="Complemento" v-model="complement"></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>

@@ -1,11 +1,8 @@
 <?php
 
-Auth::routes();
-
 Route::get('/', function () {
     return view('home');
 });
-
 Route::get('/cardapio', function () {
     return view('cardapio',
         [
@@ -14,13 +11,8 @@ Route::get('/cardapio', function () {
             ])
         ]);
 });
-
 Route::get('/montesua', function () {
     return view('monte');
 });
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+Auth::routes();
 Route::get('/admin', 'HomeController@index')->name('pedidos');

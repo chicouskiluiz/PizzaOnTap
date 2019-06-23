@@ -17,6 +17,16 @@ class DatabaseSeeder extends Seeder
         DB::beginTransaction();
 
         $this->call(UserTableSeeder::class);
+        $this->call(ClientTableSeeder::class);
+        $this->call(SizeTableSeeder::class);
+        $this->call(FlavorTableSeeder::class);
+        $this->call(AdditionalTableSeeder::class);
+        $this->call(DrinkTableSeeder::class);
+        $this->call(PizzaTableSeeder::class);
+        $this->call(FlavorInPizzaTableSeeder::class);
+        $this->call(CustomPizzaTableSeeder::class);
+        $this->call(FlavorInCustomPizzaTableSeeder::class);
+        $this->call(AdditionalInCustomPizzaTableSeeder::class);
 
         DB::commit();
         Model::reguard();

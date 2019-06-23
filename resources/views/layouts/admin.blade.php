@@ -16,21 +16,11 @@
 <body>
 <v-app id="app" v-cloak>
     <snackbar></snackbar>
-    <v-navigation-drawer
-            fixed
-            clipped
-            app
-            v-model="drawer"
-    >
+    <v-navigation-drawer fixed clipped app v-model="drawer">
         <v-list dense>
             <template v-for="(item, i) in items">
                 <template v-if="checkRoles(item)">
-                    <v-layout
-                            row
-                            v-if="item.heading"
-                            align-center
-                            :key="i"
-                    >
+                    <v-layout row v-if="item.heading" align-center :key="i">
                         <v-flex xs6>
                             <v-subheader v-if="item.heading">
                                 @{{ item.heading }}
@@ -48,11 +38,7 @@
                                 </v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
-                        <v-list-tile
-                                v-for="(child, i) in item.children"
-                                :key="i"
-                                @click="menuItemSelected(child)"
-                        >
+                        <v-list-tile v-for="(child, i) in item.children" :key="i" @click="menuItemSelected(child)">
                             <v-list-tile-action v-if="child.icon">
                                 <v-icon>@{{ child.icon }}</v-icon>
                             </v-list-tile-action>
@@ -77,14 +63,7 @@
             </template>
         </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-            color="blue darken-3"
-            dark
-            app
-            clipped-left
-            clipped-right
-            fixed
-    >
+    <v-toolbar color="blue darken-3" dark app clipped-left clipped-right fixed>
         <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <span class="hidden-xs-only">{{ config('app.shortname', 'Laravel') }}</span>
@@ -98,13 +77,7 @@
             </v-btn>
         </div>
     </v-toolbar>
-    <v-navigation-drawer
-            fixed
-            v-model="drawerRight"
-            right
-            clipped
-            app
-    >
+    <v-navigation-drawer fixed v-model="drawerRight" right clipped app>
         <v-card>
             <v-container fluid grid-list-md class="grey lighten-4">
                 <v-layout row wrap>
@@ -119,22 +92,9 @@
             </v-container>
             <v-card-text class="px-0 grey lighten-3">
                 <v-form class="pl-3 pr-1 ma-0">
-                    <v-text-field :readonly="!editingUser"
-                                  label="Email"
-                                  :value="user.email"
-                                  ref="email"
-                                  @input="updateEmail"
-                    ></v-text-field>
-                    <v-text-field :readonly="!editingUser"
-                                  label="User name"
-                                  :value="user.name"
-                                  @input="updateName"
-                    ></v-text-field>
-                    <v-text-field readonly
-                                  label="Created at"
-                                  :value="user.created_at"
-                                  readonly
-                    ></v-text-field>
+                    <v-text-field :readonly="!editingUser" label="Email" :value="user.email" ref="email" @input="updateEmail"></v-text-field>
+                    <v-text-field :readonly="!editingUser" label="User name" :value="user.name" @input="updateName"></v-text-field>
+                    <v-text-field readonly label="Created at" :value="user.created_at" readonly></v-text-field>
                 </v-form>
             </v-card-text>
             <v-card-actions>

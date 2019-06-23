@@ -1959,7 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_0__["LOGIN"], credentials).then(function (response) {
           _this.loginLoading = false;
           _this.showLogin = false;
-          window.location = '/home';
+          window.location = '/';
         })["catch"](function (error) {
           console.log('HEY:');
           console.log(error.response.data);
@@ -2516,48 +2516,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.loading = false;
         });
       }
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _store_mutation_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/mutation-types */ "./resources/js/store/mutation-types.js");
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['snackbarShow', 'snackbarColor', 'snackbarText', 'snackbarSubtext', 'snackbarTimeout'])),
-  methods: {
-    close: function close() {
-      this.$store.commit(_store_mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_SNACKBAR_SHOW"], false);
     }
   }
 });
@@ -5772,64 +5730,6 @@ var render = function() {
           )
         ],
         1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-snackbar",
-    {
-      attrs: {
-        timeout: _vm.snackbarTimeout,
-        color: _vm.snackbarColor,
-        "multi-line": true
-      },
-      model: {
-        value: _vm.snackbarShow,
-        callback: function($$v) {
-          _vm.snackbarShow = $$v
-        },
-        expression: "snackbarShow"
-      }
-    },
-    [
-      _vm._v("\n    " + _vm._s(_vm.snackbarText)),
-      _c("br"),
-      _vm._v("\n    " + _vm._s(_vm.snackbarSubtext) + "\n    "),
-      _c(
-        "v-btn",
-        {
-          attrs: { dark: "", flat: "" },
-          nativeOn: {
-            click: function($event) {
-              return _vm.close($event)
-            }
-          }
-        },
-        [_vm._v("Close")]
       )
     ],
     1
@@ -45051,7 +44951,6 @@ Vue.component('login-button', __webpack_require__(/*! ./components/LoginButtonCo
 Vue.component('register-button', __webpack_require__(/*! ./components/RegisterButtonComponent.vue */ "./resources/js/components/RegisterButtonComponent.vue")["default"]);
 Vue.component('remember-password', __webpack_require__(/*! ./components/RememberPasswordComponent.vue */ "./resources/js/components/RememberPasswordComponent.vue")["default"]);
 Vue.component('reset-password', __webpack_require__(/*! ./components/ResetPasswordComponent.vue */ "./resources/js/components/ResetPasswordComponent.vue")["default"]);
-Vue.component('snackbar', __webpack_require__(/*! ./components/SnackBarComponent.vue */ "./resources/js/components/SnackBarComponent.vue")["default"]);
 Vue.component('gravatar', __webpack_require__(/*! ./components/GravatarComponent.vue */ "./resources/js/components/GravatarComponent.vue")["default"]);
 Vue.component('cart-popup', __webpack_require__(/*! ./components/CartPopup.vue */ "./resources/js/components/CartPopup.vue")["default"]);
 Vue.component('products', __webpack_require__(/*! ./components/Products.vue */ "./resources/js/components/Products.vue")["default"]);
@@ -45750,75 +45649,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordComponent_vue_vue_type_template_id_277b31be___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPasswordComponent_vue_vue_type_template_id_277b31be___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SnackBarComponent.vue?vue&type=template&id=1a963ebd& */ "./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&");
-/* harmony import */ var _SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SnackBarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/SnackBarComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SnackBarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd& ***!
-  \**************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SnackBarComponent.vue?vue&type=template&id=1a963ebd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SnackBarComponent.vue?vue&type=template&id=1a963ebd&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnackBarComponent_vue_vue_type_template_id_1a963ebd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

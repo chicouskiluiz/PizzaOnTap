@@ -2155,6 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5278,115 +5280,134 @@ var render = function() {
               _c(
                 "v-card-text",
                 [
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Rua",
-                      rules: _vm.addressRules,
-                      required: ""
+                  _c(
+                    "v-form",
+                    {
+                      ref: "registrationForm",
+                      model: {
+                        value: _vm.valid,
+                        callback: function($$v) {
+                          _vm.valid = $$v
+                        },
+                        expression: "valid"
+                      }
                     },
-                    model: {
-                      value: _vm.address,
-                      callback: function($$v) {
-                        _vm.address = $$v
-                      },
-                      expression: "address"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "v-layout",
-                    { attrs: { row: "", wrap: "" } },
                     [
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Rua",
+                          rules: _vm.addressRules,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.address,
+                          callback: function($$v) {
+                            _vm.address = $$v
+                          },
+                          expression: "address"
+                        }
+                      }),
+                      _vm._v(" "),
                       _c(
-                        "v-flex",
-                        { attrs: { md6: "" } },
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
                         [
-                          _c("v-text-field", {
-                            attrs: {
-                              name: "number",
-                              label: "Numero",
-                              rules: _vm.numberRules,
-                              required: ""
-                            },
-                            model: {
-                              value: _vm.number,
-                              callback: function($$v) {
-                                _vm.number = $$v
-                              },
-                              expression: "number"
-                            }
-                          })
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "number",
+                                  label: "Numero",
+                                  rules: _vm.numberRules,
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.number,
+                                  callback: function($$v) {
+                                    _vm.number = $$v
+                                  },
+                                  expression: "number"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "cep",
+                                  label: "CEP",
+                                  rules: _vm.cepRules,
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.cep,
+                                  callback: function($$v) {
+                                    _vm.cep = $$v
+                                  },
+                                  expression: "cep"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       ),
                       _vm._v(" "),
                       _c(
-                        "v-flex",
-                        { attrs: { md6: "" } },
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
                         [
-                          _c("v-text-field", {
-                            attrs: {
-                              name: "cep",
-                              label: "CEP",
-                              rules: _vm.cepRules,
-                              required: ""
-                            },
-                            model: {
-                              value: _vm.cep,
-                              callback: function($$v) {
-                                _vm.cep = $$v
-                              },
-                              expression: "cep"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-layout",
-                    { attrs: { row: "", wrap: "" } },
-                    [
-                      _c(
-                        "v-flex",
-                        { attrs: { md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              name: "neighborhood",
-                              label: "Bairro",
-                              rules: _vm.neighborhoodRules,
-                              required: ""
-                            },
-                            model: {
-                              value: _vm.neighborhood,
-                              callback: function($$v) {
-                                _vm.neighborhood = $$v
-                              },
-                              expression: "neighborhood"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-flex",
-                        { attrs: { md6: "" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { name: "complement", label: "Complemento" },
-                            model: {
-                              value: _vm.complement,
-                              callback: function($$v) {
-                                _vm.complement = $$v
-                              },
-                              expression: "complement"
-                            }
-                          })
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "neighborhood",
+                                  label: "Bairro",
+                                  rules: _vm.neighborhoodRules,
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.neighborhood,
+                                  callback: function($$v) {
+                                    _vm.neighborhood = $$v
+                                  },
+                                  expression: "neighborhood"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  name: "complement",
+                                  label: "Complemento"
+                                },
+                                model: {
+                                  value: _vm.complement,
+                                  callback: function($$v) {
+                                    _vm.complement = $$v
+                                  },
+                                  expression: "complement"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -44984,25 +45005,29 @@ var app = new Vue({
       updatingUser: false,
       items: [{
         icon: 'home',
-        text: 'Admin',
-        href: '/admin'
-      }, {
-        icon: 'home',
-        text: 'Landing Page',
+        text: 'Início',
         href: '/'
       }, {
-        icon: 'settings',
-        text: 'Settings'
+        text: 'Pedidos',
+        href: '/admin'
       }, {
-        icon: 'chat_bubble',
-        text: 'Contact'
+        text: 'Pizzas',
+        href: '/admin/pizzas'
       }, {
-        heading: 'Links'
+        text: 'Sabores',
+        href: '/admin/sabores'
       }, {
-        icon: 'link',
-        text: 'Google',
-        href: 'http://www.google.com' // { heading: 'Administració', role: 'Manager' }
-
+        text: 'Refrigerantes',
+        href: '/admin/refrigerantes'
+      }, {
+        text: 'Adicionais',
+        href: '/admin/adicionais'
+      }, {
+        text: 'Tamanhos',
+        href: '/admin/tamanhos'
+      }, {
+        text: 'Usuários',
+        href: '/admin/usuarios'
       }]
     };
   },

@@ -50,13 +50,14 @@ const app = new Vue({
     changingPassword: false,
     updatingUser: false,
     items: [
-      { icon: 'home', text: 'Admin', href: '/admin' },
-      { icon: 'home', text: 'Landing Page', href: '/' },
-      { icon: 'settings', text: 'Settings' },
-      { icon: 'chat_bubble', text: 'Contact' },
-      { heading: 'Links' },
-      { icon: 'link', text: 'Google', href: 'http://www.google.com' }
-      // { heading: 'Administració', role: 'Manager' }
+      { icon: 'home', text: 'Início', href: '/' },
+      { text: 'Pedidos', href: '/admin' },
+      { text: 'Pizzas', href: '/admin/pizzas' },
+      { text: 'Sabores', href: '/admin/sabores' },
+      { text: 'Refrigerantes', href: '/admin/refrigerantes' },
+      { text: 'Adicionais', href: '/admin/adicionais' },
+      { text: 'Tamanhos', href: '/admin/tamanhos' },
+      { text: 'Usuários', href: '/admin/usuarios' },
     ]
   }),
   computed: {

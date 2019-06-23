@@ -25,4 +25,10 @@ Route::get('/admin', 'HomeController@index')->name('pedidos');
 
 Route::post('/register', 'UserController@register')->name('user.register');
 
-Route::get('/admin', 'AdminController@index')->name('pedidos');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/pizzas', 'AdminController@getPizzas');
+Route::get('/admin/sabores', 'AdminController@getSabores');
+Route::get('/admin/refrigerantes', 'AdminController@getRefrigerantes');
+Route::get('/admin/adicionais', 'AdminController@getAdicionais');
+Route::get('/admin/tamanhos', 'AdminController@getTamanhos');
+Route::get('/admin/usuarios', 'AdminController@getUsuarios');

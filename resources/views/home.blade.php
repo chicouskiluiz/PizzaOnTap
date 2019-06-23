@@ -57,8 +57,8 @@
                                     <v-icon class="blue--text text--lighten-2">place</v-icon>
                                 </v-list-tile-action>
                                 <v-list-tile-content>
-                                    <v-list-tile-title>Rua João Pessoa Filho, 1057, Centro</v-list-tile-title>
-                                    <v-list-tile-title>Guarapuava, PR</v-list-tile-title>
+                                    <v-list-tile-title>Rua João Pessoa Filho, 1057</v-list-tile-title>
+                                    <v-list-tile-title>Centro, Guarapuava, PR</v-list-tile-title>
                                 </v-list-tile-content>
                             </v-list-tile>
                             <v-list-tile>

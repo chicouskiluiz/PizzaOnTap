@@ -109,7 +109,8 @@
                 </v-btn>
                 <v-btn :loading="logoutLoading" @click="logout" flat color="orange">
                     <v-icon right dark>exit_to_app</v-icon>
-                    Logout</v-btn>
+                    Logout
+                </v-btn>
                 <v-spacer></v-spacer>
             </v-card-actions>
             <v-card-actions>

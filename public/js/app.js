@@ -2265,6 +2265,9 @@ __webpack_require__.r(__webpack_exports__);
           _this2.showRegister = false;
           window.location.reload();
         })["catch"](function (error) {
+          console.log('HEY:');
+          console.log(error.response.data);
+
           if (error.response && error.response.status === 422) {
             _this2.showError({
               message: 'Invalid data'
@@ -44998,7 +45001,8 @@ var app = new Vue({
   data: function data() {
     return {
       drawer: null,
-      drawerRight: false,
+      userInfo: false,
+      carrinho: false,
       editingUser: false,
       logoutLoading: false,
       changingPassword: false,
@@ -45064,8 +45068,11 @@ var app = new Vue({
         name: name
       }));
     },
-    toogleRightDrawer: function toogleRightDrawer() {
-      this.drawerRight = !this.drawerRight;
+    toggleUserDrawer: function toggleUserDrawer() {
+      this.userInfo = !this.userInfo;
+    },
+    toggleCarrinhoDrawer: function toggleCarrinhoDrawer() {
+      this.carrinho = !this.carrinho;
     },
     checkRoles: function checkRoles(item) {
       if (item.role) {
@@ -46320,8 +46327,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\SUdo_W\Documents\Github\PizzaOnTap\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\SUdo_W\Documents\Github\PizzaOnTap\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/comedinha/PizzaOnTap/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/comedinha/PizzaOnTap/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

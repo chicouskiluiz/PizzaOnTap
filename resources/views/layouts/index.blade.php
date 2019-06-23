@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user" content="{{ Auth::user() }}">
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
     <style>
@@ -38,14 +39,65 @@
                 <reset-password action="{{ $action ?? null }}" token="{{ $token ?? null }}" email="{{ $email ?? null }}"></reset-password>
             @else
             <v-spacer></v-spacer>
-            <cart-popup action="{{ $action ?? null }}"></cart-popup>
-            <v-btn @click="logout" flat>Sair</v-btn>
+            <v-btn flat @click="toggleCarrinhoDrawer">Carrinho</v-btn>
+            <v-btn flat @click="toggleUserDrawer">@{{ user.name }}</v-btn>
+            @if (Auth::user()->isAdmin === 1)
+                <v-btn flat color="red" href="/admin">Painel Admin</v-btn>
+            @endif
             @endif
         </v-toolbar>
         <v-content>
           @yield('content')
         </v-content>
     </v-app>
+    @if (Route::has('login') && Auth::check() )
+    <v-navigation-drawer fixed v-model="userInfo" right clipped app>
+        <v-card>
+            <v-card-text class="px-0 grey lighten-3">
+                <v-form class="pl-3 pr-1 ma-0">
+                    <v-text-field :readonly="!editingUser" label="E-mail" :value="user.email" ref="email" @input="updateEmail"></v-text-field>
+                    <v-text-field :readonly="!editingUser" label="Nome de usuário" :value="user.name" @input="updateName"></v-text-field>
+                    <v-text-field readonly label="Criado em" :value="user.created_at" readonly></v-text-field>
+                </v-form>
+            </v-card-text>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn :loading="updatingUser" flat color="green" @click="updateUser" v-if="editingUser">
+                    <v-icon right dark>save</v-icon>
+                    Salvar
+                </v-btn>
+                <v-btn flat color="orange" @click="editUser()" v-else>
+                    <v-icon right dark>edit</v-icon>
+                    Editar
+                </v-btn>
+                <v-btn :loading="logoutLoading" @click="logout" flat color="orange">
+                    <v-icon right dark>exit_to_app</v-icon>
+                    Sair
+                </v-btn>
+                <v-spacer></v-spacer>
+            </v-card-actions>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn :loading="changingPassword" flat @click="changePassword">Mudar senha</v-btn>
+                <v-spacer></v-spacer>
+            </v-card-actions>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn flat color="red" @click="toggleUserDrawer">Fechar</v-btn>
+                <v-spacer></v-spacer>
+            </v-card-actions>
+        </v-card>
+    </v-navigation-drawer>
+    <v-navigation-drawer fixed v-model="carrinho" right clipped app>
+        <v-card>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn flat color="red" @click="toggleCarrinhoDrawer">Fechar</v-btn>
+                <v-spacer></v-spacer>
+            </v-card-actions>
+        </v-card>
+    </v-navigation-drawer>
+    @endif
 </div>
 <script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
 </body>

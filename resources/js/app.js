@@ -74,7 +74,7 @@ const app = new Vue({
     updateUser () {
       this.updatingUser = true
       this.$store.dispatch(actions.UPDATE_USER, this.user).then(response => {
-        this.showMessage('User modified ok!')
+        this.showMessage('Usuário modificado!')
       }).catch(error => {
         console.dir(error)
         this.showError(error)

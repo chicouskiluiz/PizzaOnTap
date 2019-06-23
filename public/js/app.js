@@ -45048,7 +45048,7 @@ var app = new Vue({
 
       this.updatingUser = true;
       this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_1__["UPDATE_USER"], this.user).then(function (response) {
-        _this.showMessage('User modified ok!');
+        _this.showMessage('Usuário modificado!');
       })["catch"](function (error) {
         console.dir(error);
 

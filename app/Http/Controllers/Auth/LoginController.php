@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class LoginController.
@@ -40,6 +42,8 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:client')->except('logout');
     }
 
     /**
@@ -47,11 +51,29 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showUserLoginForm()
     {
-        return view('welcome', [
-            'action' => 'login'
-        ]);
+        return view('layouts/index');
     }
 
+    public function userLogin(Request $request)
+    {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->intended('/user');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function showClientLoginForm()
+    {
+        return view('layouts/index');
+    }
+
+    public function clientLogin(Request $request)
+    {
+        if (Auth::guard('client')->attempt(['cpf' => $request->cpf, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->intended('/client');
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
 }

@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         DB::beginTransaction();
 
         $this->call(UserTableSeeder::class);
-        $this->call(ClientTableSeeder::class);
         $this->call(SizeTableSeeder::class);
         $this->call(FlavorTableSeeder::class);
         $this->call(AdditionalTableSeeder::class);

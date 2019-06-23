@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Model\User;
+use App\Model\Client;
 use App\Http\Controllers\Controller;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -43,6 +44,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:client');
     }
 
     /**
@@ -65,10 +68,17 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function showAdminRegisterForm()
     {
-        return view('welcome', [
-            'action' => 'register'
+        return view('auth.register', [
+            'url' => 'user'
+        ]);
+    }
+
+    public function showWriterRegisterForm()
+    {
+        return view('auth.register', [
+            'url' => 'client'
         ]);
     }
 
@@ -78,12 +88,25 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function createUser(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password'],
         ]);
+        return redirect()->intended('login/user');
+    }
+
+    protected function createClient(Request $request)
+    {
+        $client = Client::create([
+            'name' => $request['name'],
+            'cpf' => $request['cpf'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'password' => $request['password'],
+        ]);
+        return redirect()->intended('login/writer');
     }
 }

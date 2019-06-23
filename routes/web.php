@@ -32,3 +32,11 @@ Route::get('/admin/refrigerantes', 'AdminController@getRefrigerantes');
 Route::get('/admin/adicionais', 'AdminController@getAdicionais');
 Route::get('/admin/tamanhos', 'AdminController@getTamanhos');
 Route::get('/admin/usuarios', 'AdminController@getUsuarios');
+
+Route::get('/additional', 'AdditionalController@list');
+
+Route::get('/drink', 'DrinkController@list');
+
+Route::get('/flavor', 'FlavorController@list');
+
+Route::get('/size', 'SizeController@list');

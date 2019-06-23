@@ -1787,7 +1787,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.$store.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_1__["LOGIN"], credentials).then(function (response) {
           _this.loginLoading = false;
           _this.showLogin = false;
-          window.location = '/home';
         })["catch"](function (error) {
           console.log('HEY:');
           console.log(error.response.data);
@@ -44985,8 +44984,8 @@ var app = new Vue({
       updatingUser: false,
       items: [{
         icon: 'home',
-        text: 'Home',
-        href: '/home'
+        text: 'Admin',
+        href: '/admin'
       }, {
         icon: 'home',
         text: 'Landing Page',

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     public function index() {
-        return view(cardapio, [
+        return view('cardapio', [
             'pizzas' => Pizza::all(),
             'drinks' => Drink::all(),
         ]);

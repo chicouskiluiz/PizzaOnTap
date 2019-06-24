@@ -12,6 +12,14 @@
         </tr>
         <span>R$ {{ totalPriceProduct(product) }}</span>
       </template>
+      <template v-if="product.category == 'pizzas'">
+        <h3>{{ product.name }}</h3>
+        <span>R$ {{ product.price }}</span>
+      </template>
+      <template v-if="product.category == 'drinks'">
+        <h3>{{ product.name }}</h3>
+        <span>R$ {{ product.price }}</span>
+      </template>
     </v-card-text>
     <v-card-text v-if="hasProduct()">
       <span>Total: R$ {{ totalPrice() }}</span>
@@ -45,6 +53,8 @@
             for (var j = 0; j < this.getProductsInCart[i].additionals.length; j++) {
               preco = preco + parseFloat(this.getProductsInCart[i].additionals[j].price)
             }
+          } else {
+            preco = preco + parseFloat(this.getProductsInCart[i].price)
           }
         }
 

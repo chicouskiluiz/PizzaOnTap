@@ -1,5 +1,5 @@
 @extends('layouts.index')
 
 @section('content')
-  <products :products="'{{$products}}'"></products>
+  <products :pizzas="{{$pizzas}}" :drinks="{{$drinks}}"></products>
 @endsection

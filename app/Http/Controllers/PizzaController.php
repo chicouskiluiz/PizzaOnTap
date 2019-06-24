@@ -27,9 +27,13 @@ class PizzaController extends Controller
     }
 
     public function update(Request $request) {
+        dd($request);
     }
 
     public function delete(Request $request, $pizza) {
+        $pizza = Drink::find($pizza);
+        $pizza->delete();
 
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 }

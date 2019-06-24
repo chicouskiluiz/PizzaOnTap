@@ -53,6 +53,6 @@ Route::get('/pizza', 'PizzaController@list');
 Route::get('/pizza/{id}', 'PizzaController@getFlavors');
 Route::post('/pizza', 'PizzaController@store');
 Route::put('/pizza/{id}', 'PizzaController@update');
-Route::delete('/size/{id}', 'PizzaController@delete');
+Route::delete('pizza/{id}', 'PizzaController@delete');
 
 Route::get('/montesua', 'MakeOurPizzaController@index');

@@ -5,7 +5,7 @@
                 <v-card>
                     <v-card-title class="blue darken-3 white--text"><h2>Usuários</h2></v-card-title>
                     <v-card-text class="px-0 mb-2 hidden-sm-and-down">
-                    <v-data-table :headers="headers" :items="desserts" class="elevation-1" hide-actions>
+                    <v-data-table :headers="headers" :items="desserts" class="elevation-1">
                         <template v-slot:items="props">
                         <td>{{ props.item.id }}</td>
                         <td>{{ props.item.name }}</td>

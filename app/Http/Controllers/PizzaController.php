@@ -27,9 +27,27 @@ class PizzaController extends Controller
     }
 
     public function update(Request $request) {
+        $pizza = Pizza::find($request->id);
+        $pizza->update($request->all());
+
+        try {
+            $pizza->updateFlavors($pizza->id, $request->flavors);
+            $pizza->save();
+
+            return redirect()
+                ->back()
+                ->with('alert-success', 'Atualizado!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('alert-danger', 'Falha ao atualizar!');
+        }
     }
 
     public function delete(Request $request, $pizza) {
+        $pizza = Pizza::find($pizza);
+        $pizza->delete();
 
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 }

@@ -27,7 +27,7 @@ Vue.component('cart', require('./components/Cart.vue').default);
 Vue.component('checkout', require('./components/Checkout.vue').default);
 
 Vue.component('admin-orders', require('./components/admin/Orders.vue').default);
-Vue.component('admin-flavours', require('./components/admin/Flavours.vue').default);
+Vue.component('admin-flavors', require('./components/admin/Flavors.vue').default);
 Vue.component('admin-drinks', require('./components/admin/Drinks.vue').default);
 Vue.component('admin-pizzas', require('./components/admin/Pizzas.vue').default);
 Vue.component('admin-additionals', require('./components/admin/Additionals.vue').default);

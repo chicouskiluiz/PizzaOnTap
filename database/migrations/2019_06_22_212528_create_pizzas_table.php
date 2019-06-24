@@ -19,6 +19,7 @@ class CreatePizzasTable extends Migration
             $table->bigInteger('size_id');
             $table->decimal('price', 8, 2);
             $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('size_id')->references('id')->on('sizes');

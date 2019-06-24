@@ -12,10 +12,16 @@ class DrinkController extends Controller
 
         $drink->saveOrFail();
 
-        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 
     public function list() {
         return Drink::all();
+    }
+
+    public function delete(Drink $drink) {
+        $drink->delete();
+
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 }

@@ -12,10 +12,16 @@ class FlavorController extends Controller
 
         $flavor->saveOrFail();
 
-        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 
     public function list() {
         return Flavor::all();
+    }
+
+    public function delete(Flavor $flavor) {
+        $flavor->delete();
+
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 }

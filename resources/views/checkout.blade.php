@@ -1,5 +1,5 @@
 @extends('layouts.index')
 
 @section('content')
-  <checkout></checkout>
+  <checkout :address="{{$address}}"></checkout>
 @endsection

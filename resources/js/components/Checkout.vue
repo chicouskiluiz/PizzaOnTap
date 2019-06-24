@@ -26,13 +26,13 @@
       </v-flex>
       <v-flex xs12 sm6 md4>
         <v-card-text>
-          Endereço:
+          Endereço: {{address[0].address}}, {{address[0].number}}, {{address[0].complement}}
         </v-card-text>
         <v-card-text>
-          Bairro:
+          Bairro: {{address[0].neighborhood}}
         </v-card-text>
         <v-card-text>
-          CEP:
+          CEP: {{address[0].cep}}
         </v-card-text>
       </v-flex>
     </v-layout>
@@ -68,6 +68,7 @@ export default {
       'getProductsInCart',
     ]),
   },
+  props: ['address'],
   methods: {
     ...mapActions([
       'removeProduct',

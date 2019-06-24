@@ -48,7 +48,7 @@ export default {
       selected: 'pizzas'
     }
   },
-  props : ['pizzas', 'drinks'],
+  props: ['pizzas', 'drinks'],
   methods: {
     getCategory () {
       if (this.selected == 'pizzas') {

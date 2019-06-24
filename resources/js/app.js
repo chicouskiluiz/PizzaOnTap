@@ -19,8 +19,12 @@ Vue.component('login-button', require('./components/LoginButtonComponent.vue').d
 Vue.component('register-button', require('./components/RegisterButtonComponent.vue').default);
 Vue.component('remember-password', require('./components/RememberPasswordComponent.vue').default);
 Vue.component('reset-password', require('./components/ResetPasswordComponent.vue').default);
-Vue.component('cart', require('./components/Cart.vue').default);
+
 Vue.component('products', require('./components/Products.vue').default);
+Vue.component('makeour', require('./components/MakeOurPizza.vue').default);
+
+Vue.component('cart', require('./components/Cart.vue').default);
+Vue.component('checkout', require('./components/Checkout.vue').default);
 
 Vue.component('admin-orders', require('./components/admin/Orders.vue').default);
 Vue.component('admin-flavours', require('./components/admin/Flavours.vue').default);

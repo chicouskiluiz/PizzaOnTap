@@ -5,12 +5,11 @@ Route::get('/', function () {
 });
 
 Route::get('/cardapio', function () {
-    return view('cardapio',
-        [
-            'products' => json_encode([
-                "1" => "Teste",
-            ])
-        ]);
+    return view('cardapio');
+});
+
+Route::get('/checkout', function () {
+    return view('checkout');
 });
 
 Auth::routes();

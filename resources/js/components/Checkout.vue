@@ -2,7 +2,7 @@
   <div class="checkout-box">
     <ul class="checkout-list">
       <transition-group name="fade">
-      <li v-for="(product, index) in getProductsInCart" :key="index" class="checkout-product">
+      <li v-for="(product, index) in getProductsInCart">
         <img :src="product.image" alt="" class="product-image">
         <h3 class="product-name">{{ product.name }}</h3>
         <span class="product-price">R$ {{ product.price }},00 </span>
@@ -11,8 +11,7 @@
       </transition-group>
     </ul>
     <div v-if="!hasProduct()" class="checkout-message">
-      <h3>No products...</h3>
-      <router-link to="./">Back to list of products</router-link>
+      <h3>Você não tem produtos adicionados.</h3>
     </div>
     <h3 class="total" v-if="hasProduct()">
       Total: R$ {{ totalPrice() }}, 00

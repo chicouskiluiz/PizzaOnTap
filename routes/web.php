@@ -16,9 +16,6 @@ Route::get('/cardapio', function () {
             ])
         ]);
 });
-Route::get('/montesua', function () {
-    return view('monte');
-});
 
 Auth::routes();
 
@@ -56,3 +53,10 @@ Route::get('/size', 'SizeController@list');
 Route::post('/size', 'SizeController@store');
 Route::put('/size/{id}', 'SizeController@update');
 Route::delete('/size/{id}', 'SizeController@delete');
+
+Route::get('/pizza', 'PizzaController@list');
+Route::post('/pizza', 'PizzaController@store');
+Route::put('/pizza/{id}', 'PizzaController@update');
+Route::delete('/size/{id}', 'PizzaController@delete');
+
+Route::get('/montesua', 'MakeOurPizzaController@index');

@@ -55,6 +55,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import * as actions from '../store/action-types'
 export default {
   data () {
     return {
@@ -109,7 +110,13 @@ export default {
         lista: this.getProductsInCart,
         meioPagamento: this.meioPagamento
       }
-    }
+
+      this.$store.dispatch(actions.NEWORDER, produtos).then(response => {
+        this.loginLoading = false
+        this.showLogin = false
+        window.location.reload()
+      })
+    },
   },
 };
 </script>

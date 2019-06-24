@@ -1,6 +1,18 @@
 import axios from 'axios'
 
 export default {
+  newPizza (value) {
+    return axios.post('/pizza', value)
+  },
+  updatePizza (value) {
+    const url = `/pizza/${value.id}`
+    return axios.put(url, value)
+  },
+  deletePizza (value) {
+    const url = `/pizza/${value}`
+    return axios.delete(url, value)
+  },
+
   newFlavor (value) {
     return axios.post('/flavor', value)
   },

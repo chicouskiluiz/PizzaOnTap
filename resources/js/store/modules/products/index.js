@@ -3,8 +3,7 @@ import actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  cartProducts: [],
-  cartCustomProducts: []
+  cartProducts: JSON.parse(localStorage.getItem('cart')) || [],
 }
 
 export default {

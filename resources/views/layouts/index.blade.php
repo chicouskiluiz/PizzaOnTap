@@ -47,7 +47,62 @@
             @endif
         </v-toolbar>
         <v-content>
-          @yield('content')
+            <section>
+                @yield('content')
+            </section>
+            <section>
+                <v-container grid-list-xl>
+                    <v-layout row wrap justify-center class="my-5">
+                        <v-flex xs12 sm4>
+                            <v-card class="elevation-0 transparent">
+                                <v-card-title primary-title class="layout justify-center">
+                                    <div class="headline">Sobre nós</div>
+                                </v-card-title>
+                                <v-card-text>
+                                    Com mais de 8 anos no mercado a pizzaria BomSabor trabalha para garantir o bem estar e satisfação dos seus clientes. Sempre trabalhamos com alegria e tendo a certeza de criar produtos de qualidade e fornecendo o melhor atendimento aos nossos clientes. Bom apetite!
+                                </v-card-text>
+                            </v-card>
+                        </v-flex>
+                        <v-flex xs12 sm4 offset-sm1>
+                            <v-card class="elevation-0 transparent">
+                                <v-card-title primary-title class="layout justify-center">
+                                    <div class="headline">Contato</div>
+                                </v-card-title>
+                                <v-card-text>
+                                    Horário de atendimento todos os dias das 18:00 as 23:30.
+                                </v-card-text>
+                                <v-list class="transparent">
+                                    <v-list-tile>
+                                        <v-list-tile-action>
+                                            <v-icon class="blue--text text--lighten-2">phone</v-icon>
+                                        </v-list-tile-action>
+                                        <v-list-tile-content>
+                                            <v-list-tile-title>(42) 9 1234-5678</v-list-tile-title>
+                                        </v-list-tile-content>
+                                    </v-list-tile>
+                                    <v-list-tile>
+                                        <v-list-tile-action>
+                                            <v-icon class="blue--text text--lighten-2">place</v-icon>
+                                        </v-list-tile-action>
+                                        <v-list-tile-content>
+                                            <v-list-tile-title>Rua João Pessoa Filho, 1057</v-list-tile-title>
+                                            <v-list-tile-title>Centro, Guarapuava, PR</v-list-tile-title>
+                                        </v-list-tile-content>
+                                    </v-list-tile>
+                                    <v-list-tile>
+                                        <v-list-tile-action>
+                                            <v-icon class="blue--text text--lighten-2">email</v-icon>
+                                        </v-list-tile-action>
+                                        <v-list-tile-content>
+                                            <v-list-tile-title>contato@bomsabor.com</v-list-tile-title>
+                                        </v-list-tile-content>
+                                    </v-list-tile>
+                                </v-list>
+                            </v-card>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </section>
         </v-content>
     </v-app>
     @if (Route::has('login') && Auth::check() )

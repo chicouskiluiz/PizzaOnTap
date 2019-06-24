@@ -1,22 +1,31 @@
 <template>
-  <div class="checkout-box">
-    <ul class="checkout-list">
-      <transition-group name="fade">
-      <li v-for="(product, index) in getProductsInCart">
-        <img :src="product.image" alt="" class="product-image">
-        <h3 class="product-name">{{ product.name }}</h3>
-        <span class="product-price">R$ {{ product.price }},00 </span>
-        <button class="product-remove" @click="remove(index)">X</button>
-      </li>
-      </transition-group>
-    </ul>
-    <div v-if="!hasProduct()" class="checkout-message">
-      <h3>Você não tem produtos adicionados.</h3>
-    </div>
-    <h3 class="total" v-if="hasProduct()">
-      Total: R$ {{ totalPrice() }}, 00
-    </h3>
-  </div>
+<v-card>
+    <v-card-text v-if="!hasProduct()"><center>Você não tem nenhum produto adicionado.</center></v-card-text>
+    <v-card-text v-for="(product, index) in getProductsInCart" :key="index">
+      <template v-if="product.category == 'custom'">
+        <h3>{{ product.size.name }}</h3>
+        <tr v-for="sabor in product.flavors">
+          <td>{{sabor.name}}</td>
+        </tr>
+        <tr v-for="adicionais in product.additionals">
+          <td>{{adicionais.name}}</td>
+        </tr>
+        <span>R$ {{ totalPriceProduct(product) }}</span>
+      </template>
+      <template v-if="product.category == 'pizzas'">
+        <h3>{{ product.name }}</h3>
+        <span>R$ {{ product.price }}</span>
+      </template>
+      <template v-if="product.category == 'drinks'">
+        <h3>{{ product.name }}</h3>
+        <span>R$ {{ product.price }}</span>
+      </template>
+      <v-btn @click="remove(index)">X</v-btn>
+    </v-card-text>
+    <v-card-text v-if="hasProduct()">
+      <span>Total: R$ {{ totalPrice() }}</span>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -35,8 +44,19 @@ export default {
       return this.getProductsInCart.length > 0;
     },
     totalPrice() {
-      return this.getProductsInCart.reduce((current, next) =>
-        current + next.price, 0);
+      var preco = 0
+      for (var i = 0; i < this.getProductsInCart.length; i++) {
+        if (this.getProductsInCart[i].category == 'custom') {
+          preco = preco + parseFloat(this.getProductsInCart[i].size.price)
+          for (var j = 0; j < this.getProductsInCart[i].additionals.length; j++) {
+            preco = preco + parseFloat(this.getProductsInCart[i].additionals[j].price)
+          }
+        } else {
+          preco = preco + parseFloat(this.getProductsInCart[i].price)
+        }
+      }
+
+      return preco
     },
     remove(index) {
       this.removeProduct(index);

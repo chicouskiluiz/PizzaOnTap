@@ -50,10 +50,10 @@
         <td>{{ props.item.price }}</td>
         <td>{{ props.item.description }}</td>
         <td>
-          <v-select disabled="true" v-model="props.item.size_id" item-text="name" item-value="id" :items="sizes" attach chips multiple></v-select>
+          <v-select :disabled="true" v-model="props.item.size_id" item-text="name" item-value="id" :items="sizes" attach chips multiple></v-select>
         </td>
         <td>
-          <v-select disabled="true" v-model="props.item.flavors" item-text="name" item-value="id" :items="flavors" attach chips multiple></v-select>
+          <v-select :disabled="true" v-model="props.item.flavors" item-text="name" item-value="id" :items="flavors" attach chips multiple></v-select>
         </td>
         <td class="justify-center layout px-0">
           <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>

@@ -1,5 +1,6 @@
 export default {
   ADD_PRODUCT: (state, product) => {
+    console.log(product)
     state.cartProducts.push(product);
   },
   REMOVE_PRODUCT: (state, index) => {

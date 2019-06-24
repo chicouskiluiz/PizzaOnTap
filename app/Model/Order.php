@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Order extends Model
 {
@@ -37,4 +38,20 @@ class Order extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function getAll() {
+
+    }
+
+    public function setDrinks(Request $request, $id) {
+
+    }
+
+    public function setPizzas(Request $request, $id) {
+
+    }
+
+    public function setCustomPizzas(Request $request, $id) {
+
+    }
 }

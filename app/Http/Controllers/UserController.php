@@ -9,8 +9,8 @@ use App\Model\Adress;
 
 class UserController extends Controller
 {
-    public function register(Request $request) {
-
+    public function register(Request $request)
+    {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -19,8 +19,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'isAdmin' => false
         ]);
-
-        Storage::put('file.txt', $user);
+        Storage::put('file1.txt', $user);
 
         $adress = Adress::create([
             'user_id' => $user->id,
@@ -30,6 +29,7 @@ class UserController extends Controller
             'neighborhood' => $request->neighborhood,
             'complement' => $request->complement,
         ]);
+        Storage::put('file2.txt', $adress);
 
         return redirect('/');
     }

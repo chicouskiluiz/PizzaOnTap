@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Model\User;
 use App\Model\Drink;
+use App\Model\Size;
+use App\Model\Additional;
+use App\Model\Flavor;
 
 class AdminController extends Controller
 {
@@ -35,7 +39,7 @@ class AdminController extends Controller
 
     public function getSabores()
     {
-        return view('admin.sabores');
+        return view('admin.sabores', [ 'flavors' => Flavor::all() ]);
     }
 
     public function getBebidas()
@@ -45,12 +49,12 @@ class AdminController extends Controller
 
     public function getAdicionais()
     {
-        return view('admin.adicionais');
+        return view('admin.adicionais', [ 'additionals' => Additional::all() ]);
     }
 
     public function getTamanhos()
     {
-        return view('admin.tamanho');
+        return view('admin.tamanho', [ 'sizes' => Size::all() ]);
     }
 
     public function getUsuarios()

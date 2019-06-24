@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar flat color="white">
-      <v-toolbar-title>Sabores</v-toolbar-title>
+      <v-toolbar-title>Adicionais</v-toolbar-title>
       <v-divider class="mx-2" inset vertical></v-divider>
       <v-spacer></v-spacer>
       <v-dialog v-model="dialog" max-width="500px">
@@ -22,6 +22,9 @@
                 <v-flex xs12 sm6 md4>
                   <v-text-field v-model="editedItem.description" label="Descrição"></v-text-field>
                 </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.price" label="Preço"></v-text-field>
+                </v-flex>
               </v-layout>
             </v-container>
           </v-card-text>
@@ -39,6 +42,7 @@
         <td>{{ props.item.id }}</td>
         <td>{{ props.item.name }}</td>
         <td>{{ props.item.description }}</td>
+        <td>{{ props.item.price }}</td>
         <td class="justify-center layout px-0">
           <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
           <v-icon small @click="deleteItem(props.item)">delete</v-icon>
@@ -61,16 +65,19 @@ export default {
       headers: [
         { text: 'ID', value: 'id' },
         { text: 'Nome', value: 'name' },
-        { text: 'Descrição', value: 'description' }
+        { text: 'Descrição', value: 'description' },
+        { text: 'Preço', value: 'price' }
       ],
       editedIndex: -1,
       editedItem: {
         name: '',
-        description: ''
+        description: '',
+        price: 0
       },
       defaultItem: {
         name: '',
-        description: ''
+        description: '',
+        price: 0
       }
     }
   },
@@ -94,7 +101,7 @@ export default {
 
     deleteItem (item) {
       const index = this.desserts.indexOf(item)
-      confirm('Você tem certeza que quer deletar esse item?') && this.desserts.splice(index, 1) && this.$store.dispatch(actions.DELETEFLAVOR, index).then(response => {
+      confirm('Você tem certeza que quer deletar esse item?') && this.desserts.splice(index, 1) && this.$store.dispatch(actions.DELETEADDITIONAL, index).then(response => {
         window.location.reload()
       }).catch(error => {
         console.log('HEY:')
@@ -114,7 +121,7 @@ export default {
       if (this.editedIndex > -1) {
         Object.assign(this.desserts[this.editedIndex], this.editedItem)
 
-        this.$store.dispatch(actions.UPDATEFLAVOR, this.editedItem).then(response => {
+        this.$store.dispatch(actions.UPDATEADDITIONAL, this.editedItem).then(response => {
           window.location.reload()
         }).catch(error => {
           console.log('HEY:')
@@ -123,7 +130,7 @@ export default {
       } else {
         this.desserts.push(this.editedItem)
 
-        this.$store.dispatch(actions.NEWFLAVOR, this.editedItem).then(response => {
+        this.$store.dispatch(actions.NEWADDITIONAL, this.editedItem).then(response => {
           window.location.reload()
         }).catch(error => {
           console.log('HEY:')

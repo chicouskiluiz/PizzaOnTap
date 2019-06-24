@@ -19,11 +19,15 @@ Vue.component('login-button', require('./components/LoginButtonComponent.vue').d
 Vue.component('register-button', require('./components/RegisterButtonComponent.vue').default);
 Vue.component('remember-password', require('./components/RememberPasswordComponent.vue').default);
 Vue.component('reset-password', require('./components/ResetPasswordComponent.vue').default);
-Vue.component('gravatar', require('./components/GravatarComponent.vue').default);
 Vue.component('cart-popup', require('./components/CartPopup.vue').default);
 Vue.component('products', require('./components/Products.vue').default);
 
+Vue.component('admin-orders', require('./components/admin/Orders.vue').default);
+Vue.component('admin-flavours', require('./components/admin/Flavours.vue').default);
 Vue.component('admin-drinks', require('./components/admin/Drinks.vue').default);
+Vue.component('admin-pizzas', require('./components/admin/Pizzas.vue').default);
+Vue.component('admin-additionals', require('./components/admin/Additionals.vue').default);
+Vue.component('admin-sizes', require('./components/admin/Sizes.vue').default);
 Vue.component('admin-users', require('./components/admin/Users.vue').default);
 
 window.Vuetify = require('vuetify');

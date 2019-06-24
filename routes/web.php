@@ -31,7 +31,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/pizzas', 'AdminController@getPizzas');
     Route::get('/admin/sabores', 'AdminController@getSabores');
-    Route::get('/admin/refrigerantes', 'AdminController@getRefrigerantes');
+    Route::get('/admin/bebidas', 'AdminController@getBebidas');
     Route::get('/admin/adicionais', 'AdminController@getAdicionais');
     Route::get('/admin/tamanhos', 'AdminController@getTamanhos');
     Route::get('/admin/usuarios', 'AdminController@getUsuarios');

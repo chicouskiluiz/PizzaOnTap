@@ -5,9 +5,11 @@ export default {
     return axios.post('/drink', value)
   },
   updateDrink (value) {
-    return axios.post('/login', value)
+    const url = `/drink/${value.id}`
+    return axios.put(url, value)
   },
   deleteDrink (value) {
-    return axios.post('/login', value)
+    const url = `/drink/${value}`
+    return axios.delete(url)
   }
 }

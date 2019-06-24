@@ -101,8 +101,11 @@ export default {
 
     deleteItem (item) {
       const index = this.desserts.indexOf(item)
-      confirm('Você tem certeza que quer deletar esse item?') && this.desserts.splice(index, 1) && this.$store.dispatch(actions.UPDATEDRINK, index).then(response => {
+      confirm('Você tem certeza que quer deletar esse item?') && this.desserts.splice(index, 1) && this.$store.dispatch(actions.DELETEDRINK, index).then(response => {
         window.location.reload()
+      }).catch(error => {
+        console.log('HEY:')
+        console.log(error.response.data)
       })
     },
 
@@ -117,16 +120,23 @@ export default {
     save () {
       if (this.editedIndex > -1) {
         Object.assign(this.desserts[this.editedIndex], this.editedItem)
+
+        this.$store.dispatch(actions.UPDATEDRINK, this.editedItem).then(response => {
+          window.location.reload()
+        }).catch(error => {
+          console.log('HEY:')
+          console.log(error.response.data)
+        })
       } else {
         this.desserts.push(this.editedItem)
-      }
 
-      this.$store.dispatch(actions.NEWDRINK, this.editedItem).then(response => {
-        window.location.reload()
-      }).catch(error => {
-        console.log('HEY:')
-        console.log(error.response.data)
-      })
+        this.$store.dispatch(actions.NEWDRINK, this.editedItem).then(response => {
+          window.location.reload()
+        }).catch(error => {
+          console.log('HEY:')
+          console.log(error.response.data)
+        })
+      }
       this.close()
     }
   }

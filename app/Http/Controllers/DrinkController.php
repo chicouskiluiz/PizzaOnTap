@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Drink;
+use Illuminate\Support\Facades\Storage;
 
 class DrinkController extends Controller
 {
@@ -19,7 +20,9 @@ class DrinkController extends Controller
         return Drink::all();
     }
 
-    public function update(Request $request, Drink $drink) {
+    public function update(Request $request) {
+        $drink = Drink::find($request->id);
+        Storage::put('file.txt', $drink);
         $drink->update($request->all());
 
         try {
@@ -35,7 +38,8 @@ class DrinkController extends Controller
         }
     }
 
-    public function delete(Drink $drink) {
+    public function delete(Request $request, $drink) {
+        $drink = Drink::find($drink+1);
         $drink->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

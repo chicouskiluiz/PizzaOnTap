@@ -10,6 +10,6 @@ export default {
   },
   deleteDrink (value) {
     const url = `/drink/${value}`
-    return axios.delete(url)
+    return axios.delete(url, value)
   }
 }

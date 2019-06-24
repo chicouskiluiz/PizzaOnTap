@@ -45,7 +45,8 @@ class AdminController extends Controller
         return view('admin.pizzas', [
             'pizzas' => $pizzas,
             'flavors' => Flavor::all(),
-            'relation' => FlavorInPizza::all(),
+            'sizes' => Size::all(),
+            'relation' => FlavorInPizza::all()
         ]);
     }
 

@@ -71,7 +71,8 @@ export default {
         { text: 'Nome', value: 'name' },
         { text: 'Preço', value: 'price' },
         { text: 'Descrição', value: 'description' },
-        { text: 'Tamanho do Pedaço', value: 'size_id' }
+        { text: 'Tamanho do Pedaço', value: 'size_id' },
+        { text: 'Tamanho do Pedaço', value: 'flavours' },
       ],
       editedIndex: -1,
       editedItem: {
@@ -98,7 +99,7 @@ export default {
       val || this.close()
     }
   },
-  props : [ 'desserts', 'sizes', 'flavors' ],
+  props : [ 'desserts', 'sizes', 'flavors', 'relation' ],
   methods: {
     editItem (item) {
       this.editedIndex = this.desserts.indexOf(item)

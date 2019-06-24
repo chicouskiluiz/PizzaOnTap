@@ -45,18 +45,30 @@ class Pizza extends Model
     {
         $flavors = DB::table('flavor_in_pizzas')->where('pizza_id', $id)->get();
 
-        $query = DB::table('flavors');
-        foreach ($flavors as $flavor) {
-            $query->orWhere('id', $flavor->id);
-        }
-
-        $flavors = $query->get();
         $flavors_id = [];
 
         foreach ($flavors as $flavor) {
-            array_push($flavors_id, $flavor->id);
+            array_push($flavors_id, $flavor->flavor_id);
         }
 
         return $flavors_id;
+    }
+
+    public function updateFlavors($id, $flavors)
+    {
+        $pizzas = FlavorInPizza::where('pizza_id', $id)->get();
+
+        foreach ($pizzas as $pizza) {
+            $pizza->delete();
+        }
+
+        foreach ($flavors as $flavor) {
+            $pizza = FlavorInPizza::create([
+                'pizza_id' => $id,
+                'flavor_id' => $flavor
+            ]);
+
+            $pizza->save();
+        }
     }
 }

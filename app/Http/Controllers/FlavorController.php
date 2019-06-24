@@ -8,7 +8,7 @@ use App\Model\Flavor;
 class FlavorController extends Controller
 {
     public function store(Request $request) {
-        $flavor= new Drink($request->all());
+        $flavor = new Flavor($request->all());
 
         $flavor->saveOrFail();
 
@@ -20,7 +20,7 @@ class FlavorController extends Controller
     }
 
     public function update(Request $request) {
-        $flavor = Drink::find($request->id);
+        $flavor = Flavor::find($request->id);
         $flavor->update($request->all());
 
         try {

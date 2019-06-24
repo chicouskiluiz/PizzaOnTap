@@ -58,7 +58,6 @@ const app = new Vue({
     changingPassword: false,
     updatingUser: false,
     items: [
-      { icon: 'home', text: 'Início', href: '/' },
       { text: 'Pedidos', href: '/admin' },
       { text: 'Sabores', href: '/admin/sabores' },
       { text: 'Bebidas', href: '/admin/bebidas' },

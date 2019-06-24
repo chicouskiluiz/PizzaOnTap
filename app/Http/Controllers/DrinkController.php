@@ -19,6 +19,22 @@ class DrinkController extends Controller
         return Drink::all();
     }
 
+    public function update(Request $request, Drink $drink) {
+        $drink->update($request->all());
+
+        try {
+            $drink->save();
+
+            return redirect()
+                ->back()
+                ->with('alert-success', 'Atualizado!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('alert-danger', 'Falha ao atualizar!');
+        }
+    }
+
     public function delete(Drink $drink) {
         $drink->delete();
 

@@ -19,6 +19,22 @@ class SizeController extends Controller
         return Size::all();
     }
 
+    public function update(Request $request, Size $size) {
+        $size->update($request->all());
+
+        try {
+            $size->save();
+
+            return redirect()
+                ->back()
+                ->with('alert-success', 'Atualizado!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('alert-danger', 'Falha ao atualizar!');
+        }
+    }
+
     public function delete(Size $size) {
         $size->delete();
 

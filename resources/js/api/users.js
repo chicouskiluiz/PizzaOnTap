@@ -9,5 +9,9 @@ export default {
       'name': user.name,
       'email': user.email
     })
-  }
+  },
+
+  newOrder (value) {
+    return axios.post('/order', value)
+  },
 }

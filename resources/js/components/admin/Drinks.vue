@@ -25,6 +25,9 @@
                 <v-flex xs12 sm6 md4>
                   <v-text-field v-model="editedItem.price" label="Preço"></v-text-field>
                 </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.image" label="Imagem"></v-text-field>
+                </v-flex>
               </v-layout>
             </v-container>
           </v-card-text>
@@ -72,12 +75,14 @@ export default {
       editedItem: {
         name: '',
         description: '',
-        price: 0
+        price: 0,
+        image: ''
       },
       defaultItem: {
         name: '',
         description: '',
-        price: 0
+        price: 0,
+        image: ''
       }
     }
   },

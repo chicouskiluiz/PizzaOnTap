@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\FlavorInPizza;
+use App\Model\Order;
 use App\Model\Pizza;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.pedidos');
+        return view('admin.pedidos', [
+            'orders' => Order::all(),
+        ]);
     }
 
     public function getPizzas()

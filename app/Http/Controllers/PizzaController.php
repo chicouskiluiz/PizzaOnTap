@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Model\Pizza;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class PizzaController extends Controller
 {
     public function store(Request $request) {
+        $pizza = Pizza::create($request->all());
+        $pizza->save;
+
+        $pizza->updateFlavors($pizza->id, $request->flavors);
 
     }
 

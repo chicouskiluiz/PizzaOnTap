@@ -53,7 +53,7 @@ class LoginController extends Controller
      */
     public function showUserLoginForm()
     {
-        return view('layouts/index');
+        return redirect()->intended('/');
     }
 
     public function userLogin(Request $request)
@@ -66,7 +66,7 @@ class LoginController extends Controller
 
     public function showClientLoginForm()
     {
-        return view('layouts/index');
+        return redirect()->intended('/');
     }
 
     public function clientLogin(Request $request)

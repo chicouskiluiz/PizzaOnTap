@@ -12,10 +12,32 @@ class AdditionalController extends Controller
 
         $additional->saveOrFail();
 
-        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 
     public function list() {
         return Additional::all();
+    }
+
+    public function update(Request $request, Additional $additional) {
+        $additional->update($request->all());
+
+        try {
+            $additional->save();
+
+            return redirect()
+                ->back()
+                ->with('alert-success', 'Atualizado!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('alert-danger', 'Falha ao atualizar!');
+        }
+    }
+
+    public function delete(Additional $additional) {
+        $additional->delete();
+
+        return response('Success', 200)->header('Content-Type', 'text/plain');
     }
 }

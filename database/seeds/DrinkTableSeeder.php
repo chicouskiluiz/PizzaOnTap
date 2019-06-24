@@ -15,25 +15,29 @@ class DrinkTableSeeder extends Seeder
         DB::table('drinks')->insert([
             'name' => 'Coca-cola',
             'description' => 'Coca-cola 2l',
-            'price' => '8.49'
+            'price' => '8.49',
+            'image' => 'https://www.bicodepaors.com/wp-content/uploads/2016/10/refrigerantes.jpg'
         ]);
 
         DB::table('drinks')->insert([
             'name' => 'Pepsi',
             'description' => 'Pepsi 2l',
-            'price' => '6.99'
+            'price' => '6.99',
+            'image' => 'https://www.bicodepaors.com/wp-content/uploads/2016/10/refrigerantes.jpg'
         ]);
 
         DB::table('drinks')->insert([
             'name' => 'Guaraná Antarctica',
             'description' => 'Guaraná Antarctica 2l',
-            'price' => '5.99'
+            'price' => '5.99',
+            'image' => 'https://www.bicodepaors.com/wp-content/uploads/2016/10/refrigerantes.jpg'
         ]);
 
         DB::table('drinks')->insert([
             'name' => 'Xamego',
             'description' => 'Xamego 7l',
-            'price' => '2.99'
+            'price' => '2.99',
+            'image' => 'https://www.bicodepaors.com/wp-content/uploads/2016/10/refrigerantes.jpg'
         ]);
     }
 }

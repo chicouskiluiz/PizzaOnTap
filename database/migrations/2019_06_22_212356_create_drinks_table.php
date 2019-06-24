@@ -18,6 +18,7 @@ class CreateDrinksTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price', 8, 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

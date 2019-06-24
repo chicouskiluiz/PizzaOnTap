@@ -36,8 +36,14 @@ class AdminController extends Controller
 
     public function getPizzas()
     {
+        $pizzas = Pizza::all();
+
+        foreach ($pizzas as $pizza) {
+            $pizza->flavors = $pizza->flavors($pizza->id);
+        }
+
         return view('admin.pizzas', [
-            'pizzas' => Pizza::all(),
+            'pizzas' => $pizzas,
             'flavors' => Flavor::all(),
             'relation' => FlavorInPizza::all(),
         ]);

@@ -39,7 +39,7 @@ class DrinkController extends Controller
     }
 
     public function delete(Request $request, $drink) {
-        $drink = Drink::find($drink+1);
+        $drink = Drink::find($drink);
         $drink->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

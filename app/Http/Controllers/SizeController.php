@@ -37,7 +37,7 @@ class SizeController extends Controller
     }
 
     public function delete(Request $request, $size) {
-        $size = Drink::find($size+1);
+        $size = Drink::find($size);
         $size->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

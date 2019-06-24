@@ -7,9 +7,6 @@ Route::get('/', function () {
 Route::get('/cardapio', function () {
     return view('cardapio');
 });
-Route::get('/montesua', function () {
-    return view('monte');
-});
 
 Route::get('/checkout', function () {
     return view('checkout');
@@ -51,3 +48,10 @@ Route::get('/size', 'SizeController@list');
 Route::post('/size', 'SizeController@store');
 Route::put('/size/{id}', 'SizeController@update');
 Route::delete('/size/{id}', 'SizeController@delete');
+
+Route::get('/pizza', 'PizzaController@list');
+Route::post('/pizza', 'PizzaController@store');
+Route::put('/pizza/{id}', 'PizzaController@update');
+Route::delete('/size/{id}', 'PizzaController@delete');
+
+Route::get('/montesua', 'MakeOurPizzaController@index');

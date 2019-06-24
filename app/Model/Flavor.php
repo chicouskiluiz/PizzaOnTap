@@ -37,4 +37,9 @@ class Flavor extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function pizzas()
+    {
+        return $this->belongsToMany(Pizza::class, 'flavor_in_pizzas');
+    }
 }

@@ -67,6 +67,7 @@
             <span class="hidden-xs-only">{{ config('app.shortname', 'Laravel') }}</span>
         </v-toolbar-title>
         <div class="d-flex align-center" style="margin-left: auto">
+            <v-btn flat href="/">Início</v-btn>
             <v-btn flat>@{{ user.name }}</v-btn>
         </div>
     </v-toolbar>

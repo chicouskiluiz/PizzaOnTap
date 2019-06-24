@@ -89,6 +89,7 @@
         </v-card>
     </v-navigation-drawer>
     <v-navigation-drawer fixed v-model="carrinho" right clipped app>
+        <cart></cart>
         <v-card>
             <v-card-actions>
                 <v-spacer></v-spacer>

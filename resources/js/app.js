@@ -19,7 +19,7 @@ Vue.component('login-button', require('./components/LoginButtonComponent.vue').d
 Vue.component('register-button', require('./components/RegisterButtonComponent.vue').default);
 Vue.component('remember-password', require('./components/RememberPasswordComponent.vue').default);
 Vue.component('reset-password', require('./components/ResetPasswordComponent.vue').default);
-Vue.component('cart-popup', require('./components/CartPopup.vue').default);
+Vue.component('cart', require('./components/Cart.vue').default);
 Vue.component('products', require('./components/Products.vue').default);
 
 Vue.component('admin-orders', require('./components/admin/Orders.vue').default);
@@ -58,7 +58,6 @@ const app = new Vue({
     changingPassword: false,
     updatingUser: false,
     items: [
-      { icon: 'home', text: 'Início', href: '/' },
       { text: 'Pedidos', href: '/admin' },
       { text: 'Sabores', href: '/admin/sabores' },
       { text: 'Bebidas', href: '/admin/bebidas' },

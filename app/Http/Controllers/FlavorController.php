@@ -37,7 +37,7 @@ class FlavorController extends Controller
     }
 
     public function delete(Request $request, $flavor) {
-        $flavor = Drink::find($flavor+1);
+        $flavor = Drink::find($flavor);
         $flavor->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

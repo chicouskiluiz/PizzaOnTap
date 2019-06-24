@@ -37,7 +37,7 @@ class AdditionalController extends Controller
     }
 
     public function delete(Request $request, $additional) {
-        $additional = Drink::find($additional+1);
+        $additional = Drink::find($additional);
         $additional->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

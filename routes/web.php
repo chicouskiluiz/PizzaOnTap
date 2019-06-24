@@ -50,6 +50,7 @@ Route::put('/size/{id}', 'SizeController@update');
 Route::delete('/size/{id}', 'SizeController@delete');
 
 Route::get('/pizza', 'PizzaController@list');
+Route::get('/pizza/{id}', 'PizzaController@getFlavors');
 Route::post('/pizza', 'PizzaController@store');
 Route::put('/pizza/{id}', 'PizzaController@update');
 Route::delete('/size/{id}', 'PizzaController@delete');

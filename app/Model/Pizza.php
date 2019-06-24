@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Pizza extends Model
 {
@@ -40,8 +41,15 @@ class Pizza extends Model
         'deleted_at'
     ];
 
-    public function flavors()
+    public function flavors($id)
     {
-        return $this->belongsToMany(Flavor::class, 'flavor_in_pizzas');
+        $flavors = DB::table('flavor_in_pizzas')->where('pizza_id', $id)->get();
+
+        $query = DB::table('flavors');
+        foreach ($flavors as $flavor) {
+            $query->orWhere('id', $flavor->id);
+        }
+
+        return $query->get();
     }
 }

@@ -29,7 +29,7 @@
                   <v-select v-model="editedItem.size_id" item-text="name" item-value="id" :items="sizes" label="Tamanho do Pedaço"></v-select>
                 </v-flex>
                 <v-flex xs12 sm12 md8>
-                  <v-select v-model="editedItem.size_id" item-text="name" item-value="id" :items="flavors" attach chips multiple label="Sabores"></v-select>
+                  <v-select v-model="editedItem.flavors" item-text="name" item-value="id" :items="flavors" attach chips multiple label="Sabores"></v-select>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -49,7 +49,12 @@
         <td>{{ props.item.name }}</td>
         <td>{{ props.item.price }}</td>
         <td>{{ props.item.description }}</td>
-        <td>{{ props.item.size_id }}</td>
+        <td>
+          <v-select disabled="true" v-model="props.item.size_id" item-text="name" item-value="id" :items="sizes" attach chips multiple></v-select>
+        </td>
+        <td>
+          <v-select disabled="true" v-model="props.item.flavors" item-text="name" item-value="id" :items="flavors" attach chips multiple></v-select>
+        </td>
         <td class="justify-center layout px-0">
           <v-icon small class="mr-2" @click="editItem(props.item)">edit</v-icon>
           <v-icon small @click="deleteItem(props.item)">delete</v-icon>
@@ -80,15 +85,17 @@ export default {
       editedIndex: -1,
       editedItem: {
         name: '',
-        slice: 0,
         price: 0,
-        num_flavor: 0
+        description: '',
+        size_id: 0,
+        flavours: [0]
       },
       defaultItem: {
         name: '',
-        slice: 0,
         price: 0,
-        num_flavor: 0
+        description: '',
+        size_id: 0,
+        flavours: [0]
       }
     }
   },

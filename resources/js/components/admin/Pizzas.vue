@@ -31,6 +31,9 @@
                 <v-flex xs12 sm12 md8>
                   <v-select v-model="editedItem.flavors" item-text="name" item-value="id" :items="flavors" attach chips multiple label="Sabores"></v-select>
                 </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.image" label="Imagem"></v-text-field>
+                </v-flex>
               </v-layout>
             </v-container>
           </v-card-text>
@@ -88,14 +91,16 @@ export default {
         price: 0,
         description: '',
         size_id: 0,
-        flavours: [0]
+        flavours: [0],
+        image: ''
       },
       defaultItem: {
         name: '',
         price: 0,
         description: '',
         size_id: 0,
-        flavours: [0]
+        flavours: [0],
+        image: ''
       }
     }
   },

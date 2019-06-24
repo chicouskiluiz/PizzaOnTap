@@ -9,21 +9,23 @@
       </v-card-actions>
       <v-container fluid grid-list-md>
         <v-data-iterator :items="getCategory()" :search="search" :rows-per-page-items="rowsPerPageItems" :pagination.sync="pagination" content-tag="v-layout" row wrap>
-          <v-flex slot="item" slot-scope="props" md3>
+          <v-flex slot="item" slot-scope="props" md2>
             <v-card>
               <v-system-bar>
                 <span>{{ props.item.name }}</span>
               <v-spacer />
               </v-system-bar>
-              <v-img :src="props.item.image"></v-img>
+              <v-img :src="props.item.image" height="110"></v-img>
               <v-card-text>
                 {{ props.item.description }}
               </v-card-text>
               <v-card-text>
-                R$: {{ props.item.price }}
+                Por R$: {{ props.item.price }}
               </v-card-text>
               <v-card-actions>
+                <v-spacer />
                 <v-btn color="primary" @click="comprar(props.item)">Adicionar ao Carrinho</v-btn>
+                <v-spacer />
               </v-card-actions>
             </v-card>
           </v-flex>

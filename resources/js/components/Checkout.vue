@@ -1,36 +1,67 @@
 <template>
 <v-card>
     <v-card-text v-if="!hasProduct()"><center>Você não tem nenhum produto adicionado.</center></v-card-text>
-    <v-card-text v-for="(product, index) in getProductsInCart" :key="index">
-      <template v-if="product.category == 'custom'">
-        <h3>{{ product.size.name }}</h3>
-        <tr v-for="sabor in product.flavors">
-          <td>{{sabor.name}}</td>
-        </tr>
-        <tr v-for="adicionais in product.additionals">
-          <td>{{adicionais.name}}</td>
-        </tr>
-        <span>R$ {{ totalPriceProduct(product) }}</span>
-      </template>
-      <template v-if="product.category == 'pizzas'">
-        <h3>{{ product.name }}</h3>
-        <span>R$ {{ product.price }}</span>
-      </template>
-      <template v-if="product.category == 'drinks'">
-        <h3>{{ product.name }}</h3>
-        <span>R$ {{ product.price }}</span>
-      </template>
-      <v-btn @click="remove(index)">X</v-btn>
-    </v-card-text>
+    <v-layout wrap>
+      <v-flex xs12 sm6 md4>
+        <v-card-text v-for="(product, index) in getProductsInCart" :key="index">
+          <template v-if="product.category == 'custom'">
+            <h3>{{ product.size.name }} <v-btn small flat @click="remove(index)">X</v-btn></h3>
+            <tr v-for="sabor in product.flavors">
+              <td>{{sabor.name}}</td>
+            </tr>
+            <tr v-for="adicionais in product.additionals">
+              <td>{{adicionais.name}}</td>
+            </tr>
+            <span>R$ {{ totalPriceProduct(product) }}</span>
+          </template>
+          <template v-if="product.category == 'pizzas'">
+            <h3>{{ product.name }}</h3>
+            <span>R$ {{ product.price }}</span>
+          </template>
+          <template v-if="product.category == 'drinks'">
+            <h3>{{ product.name }} <v-btn small flat @click="remove(index)">X</v-btn></h3>
+            <span>R$ {{ product.price }}</span>
+          </template>
+        </v-card-text>
+      </v-flex>
+      <v-flex xs12 sm6 md4>
+        <v-card-text>
+          Endereço:
+        </v-card-text>
+        <v-card-text>
+          Bairro:
+        </v-card-text>
+        <v-card-text>
+          CEP:
+        </v-card-text>
+      </v-flex>
+    </v-layout>
     <v-card-text v-if="hasProduct()">
       <span>Total: R$ {{ totalPrice() }}</span>
     </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-layout wrap>
+        <v-flex xs12 sm6 md4>
+          <v-select v-model="meioPagamento" :items="meiosPagamento" label="Tipo de Pagamento"></v-select>
+        </v-flex>
+        <v-flex xs12 sm6 md4>
+          <v-btn>Pedir</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
+  data () {
+    return {
+      meiosPagamento: ["Cartão de Débito", "Cartão de Crédito", "Dinheiro"],
+      meioPagamento: ''
+    }
+  },
   computed: {
     ...mapGetters([
       'getProductsInCart',
@@ -43,6 +74,16 @@ export default {
     hasProduct() {
       return this.getProductsInCart.length > 0;
     },
+
+    totalPriceProduct (product) {
+      var preco = parseFloat(product.size.price)
+      for (var i = 0; i < product.additionals.length; i++) {
+        preco = preco + parseFloat(product.additionals[i].price)
+      }
+
+      return preco
+    },
+
     totalPrice() {
       var preco = 0
       for (var i = 0; i < this.getProductsInCart.length; i++) {
@@ -58,9 +99,17 @@ export default {
 
       return preco
     },
+
     remove(index) {
       this.removeProduct(index);
     },
+
+    comprar() {
+      var produtos = {
+        lista: this.getProductsInCart,
+        meioPagamento: this.meioPagamento
+      }
+    }
   },
 };
 </script>

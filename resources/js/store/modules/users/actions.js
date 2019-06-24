@@ -25,5 +25,15 @@ export default {
         reject(error)
       })
     })
-  }
+  },
+
+  [ actions.NEWORDER ] (context, value) {
+    return new Promise((resolve, reject) => {
+      users.newOrder(value).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
 }

@@ -57,3 +57,5 @@ Route::get('/checkout', 'OrderController@index');
 Route::post('/checkout', 'OrderController@store');
 
 Route::get('/montesua', 'MakeOurPizzaController@index');
+
+Route::get('/endereco', 'AddressController@get');

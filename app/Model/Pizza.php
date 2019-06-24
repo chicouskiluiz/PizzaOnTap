@@ -50,6 +50,13 @@ class Pizza extends Model
             $query->orWhere('id', $flavor->id);
         }
 
-        return $query->get();
+        $flavors = $query->get();
+        $flavors_id = [];
+
+        foreach ($flavors as $flavor) {
+            array_push($flavors_id, $flavor->id);
+        }
+
+        return $flavors_id;
     }
 }

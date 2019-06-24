@@ -16,7 +16,8 @@ class Pizza extends Model
         'name',
         'size_id',
         'price',
-        'description'
+        'description',
+        'image'
     ];
 
     /**

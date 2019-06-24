@@ -4,10 +4,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/cardapio', 'MenuController@index');
-
-Route::get('/checkout', function () {
-    return view('checkout');
+Route::get('/cardapio', function () {
+    return view('cardapio');
 });
 
 Auth::routes();
@@ -52,5 +50,10 @@ Route::get('/pizza/{id}', 'PizzaController@getFlavors');
 Route::post('/pizza', 'PizzaController@store');
 Route::put('/pizza/{id}', 'PizzaController@update');
 Route::delete('pizza/{id}', 'PizzaController@delete');
+
+Route::get('/menu', 'PizzaController@index');
+
+Route::get('/checkout', 'OrderController@index');
+Route::post('/checkout', 'OrderController@store');
 
 Route::get('/montesua', 'MakeOurPizzaController@index');

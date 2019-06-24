@@ -100,7 +100,7 @@ export default {
     },
 
     deleteItem (item) {
-      confirm('Você tem certeza que quer deletar esse item?') && this.$store.dispatch(actions.DELETESIZE, item.id).then(response => {
+      confirm('Você tem certeza que quer deletar esse item?') && this.$store.dispatch(actions.DELETEDRINK, item.id).then(response => {
         window.location.reload()
       }).catch(error => {
         console.log('HEY:')

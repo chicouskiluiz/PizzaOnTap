@@ -93,8 +93,7 @@ export default {
     },
 
     deleteItem (item) {
-      const index = this.desserts.indexOf(item)
-      confirm('Você tem certeza que quer deletar esse item?') && this.desserts.splice(index, 1) && this.$store.dispatch(actions.DELETEFLAVOR, index).then(response => {
+      confirm('Você tem certeza que quer deletar esse item?') && this.$store.dispatch(actions.DELETESIZE, item.id).then(response => {
         window.location.reload()
       }).catch(error => {
         console.log('HEY:')

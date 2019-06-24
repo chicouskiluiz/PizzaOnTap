@@ -1,6 +1,18 @@
 import axios from 'axios'
 
 export default {
+  newFlavor (value) {
+    return axios.post('/flavor', value)
+  },
+  updateFlavor (value) {
+    const url = `/flavor/${value.id}`
+    return axios.put(url, value)
+  },
+  deleteFlavor (value) {
+    const url = `/flavor/${value}`
+    return axios.delete(url, value)
+  },
+
   newDrink (value) {
     return axios.post('/drink', value)
   },
@@ -11,5 +23,29 @@ export default {
   deleteDrink (value) {
     const url = `/drink/${value}`
     return axios.delete(url, value)
-  }
+  },
+
+  newAdditional (value) {
+    return axios.post('/additional', value)
+  },
+  updateAdditional (value) {
+    const url = `/additional/${value.id}`
+    return axios.put(url, value)
+  },
+  deleteAdditional (value) {
+    const url = `/additional/${value}`
+    return axios.delete(url, value)
+  },
+
+  newSize (value) {
+    return axios.post('/size', value)
+  },
+  updateSize (value) {
+    const url = `/size/${value.id}`
+    return axios.put(url, value)
+  },
+  deleteSize (value) {
+    const url = `/size/${value}`
+    return axios.delete(url, value)
+  },
 }

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <admin-users :desserts="{{$users}}"></admin-users>
+    <admin-drinks :desserts="{{$drinks}}"></admin-drinks>
 @endsection

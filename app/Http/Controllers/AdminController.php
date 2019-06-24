@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\User;
+use App\Model\Drink;
 
 class AdminController extends Controller
 {
@@ -36,9 +38,9 @@ class AdminController extends Controller
         return view('admin.sabores');
     }
 
-    public function getRefrigerantes()
+    public function getBebidas()
     {
-        return view('admin.refrigerantes');
+        return view('admin.bebidas', [ 'drinks' => Drink::all() ]);
     }
 
     public function getAdicionais()
@@ -53,6 +55,6 @@ class AdminController extends Controller
 
     public function getUsuarios()
     {
-        return view('admin.usuarios');
+        return view('admin.usuarios', [ 'users' => User::all() ]);
     }
 }

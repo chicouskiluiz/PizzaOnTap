@@ -23,6 +23,9 @@ Vue.component('gravatar', require('./components/GravatarComponent.vue').default)
 Vue.component('cart-popup', require('./components/CartPopup.vue').default);
 Vue.component('products', require('./components/Products.vue').default);
 
+Vue.component('admin-drinks', require('./components/admin/Drinks.vue').default);
+Vue.component('admin-users', require('./components/admin/Users.vue').default);
+
 window.Vuetify = require('vuetify');
 Vue.use(Vuetify)
 
@@ -53,9 +56,9 @@ const app = new Vue({
     items: [
       { icon: 'home', text: 'Início', href: '/' },
       { text: 'Pedidos', href: '/admin' },
-      { text: 'Pizzas', href: '/admin/pizzas' },
       { text: 'Sabores', href: '/admin/sabores' },
-      { text: 'Refrigerantes', href: '/admin/refrigerantes' },
+      { text: 'Bebidas', href: '/admin/bebidas' },
+      { text: 'Pizzas', href: '/admin/pizzas' },
       { text: 'Adicionais', href: '/admin/adicionais' },
       { text: 'Tamanhos', href: '/admin/tamanhos' },
       { text: 'Usuários', href: '/admin/usuarios' },

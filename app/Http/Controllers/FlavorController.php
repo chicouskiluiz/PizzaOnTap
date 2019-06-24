@@ -19,7 +19,8 @@ class FlavorController extends Controller
         return Flavor::all();
     }
 
-    public function update(Request $request, Flavor $flavor) {
+    public function update(Request $request) {
+        $flavor = Drink::find($request->id);
         $flavor->update($request->all());
 
         try {
@@ -35,7 +36,8 @@ class FlavorController extends Controller
         }
     }
 
-    public function delete(Flavor $flavor) {
+    public function delete(Request $request, $flavor) {
+        $flavor = Drink::find($flavor+1);
         $flavor->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

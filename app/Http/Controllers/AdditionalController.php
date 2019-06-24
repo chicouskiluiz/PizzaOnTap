@@ -19,7 +19,8 @@ class AdditionalController extends Controller
         return Additional::all();
     }
 
-    public function update(Request $request, Additional $additional) {
+    public function update(Request $request) {
+        $additional = Additional::find($request->id);
         $additional->update($request->all());
 
         try {
@@ -35,7 +36,8 @@ class AdditionalController extends Controller
         }
     }
 
-    public function delete(Additional $additional) {
+    public function delete(Request $request, $additional) {
+        $additional = Drink::find($additional+1);
         $additional->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

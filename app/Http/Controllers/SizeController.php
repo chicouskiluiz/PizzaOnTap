@@ -19,7 +19,8 @@ class SizeController extends Controller
         return Size::all();
     }
 
-    public function update(Request $request, Size $size) {
+    public function update(Request $request) {
+        $size = Drink::find($request->id);
         $size->update($request->all());
 
         try {
@@ -35,7 +36,8 @@ class SizeController extends Controller
         }
     }
 
-    public function delete(Size $size) {
+    public function delete(Request $request, $size) {
+        $size = Drink::find($size+1);
         $size->delete();
 
         return response('Success', 200)->header('Content-Type', 'text/plain');

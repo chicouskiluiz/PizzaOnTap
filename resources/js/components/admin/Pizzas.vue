@@ -98,7 +98,7 @@ export default {
       val || this.close()
     }
   },
-  props : ['desserts'],
+  props : [ 'desserts', 'sizes', 'flavors' ],
   methods: {
     editItem (item) {
       this.editedIndex = this.desserts.indexOf(item)

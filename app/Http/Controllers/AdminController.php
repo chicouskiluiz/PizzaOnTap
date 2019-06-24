@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\FlavorInPizza;
+use App\Model\Pizza;
 use Illuminate\Http\Request;
 
 use App\Model\User;
@@ -34,7 +36,11 @@ class AdminController extends Controller
 
     public function getPizzas()
     {
-        return view('admin.pizzas');
+        return view('admin.pizzas', [
+            'pizzas' => Pizza::all(),
+            'flavors' => Flavor::all(),
+            'relation' => FlavorInPizza::all(),
+        ]);
     }
 
     public function getSabores()

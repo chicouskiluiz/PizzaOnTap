@@ -13,15 +13,23 @@ class PizzaController extends Controller
     }
 
     public function list() {
-        // $pizzas = Pizza::all();
+        return Pizza::all();
+    }
 
-        $pizza = Pizza::find(5);
-        dd($pizza->flavors());
+    public function getFlavors($id) {
+        try {
+            $pizza = Pizza::findOrFail($id);
+
+            return $pizza->flavors($id);
+        } catch (\Exception $e) {
+            return response('Not Found', 404)->header('Content-Type', 'text/plain');
+        }
     }
 
     public function update(Request $request) {
     }
 
-    public function delete(Request $request, $additional) {
+    public function delete(Request $request, $pizza) {
+
     }
 }
